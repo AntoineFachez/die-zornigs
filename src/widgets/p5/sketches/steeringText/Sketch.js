@@ -38,7 +38,7 @@ export default function Sketch({
       p.createCanvas(canvasWidth, canvasHeight);
       p.colorMode(p.HSB);
       // p.background(backgroundColor);
-
+      p.background(0, 0, 0, 0);
       p.textSize(fontSize);
       widthOfText = p.textWidth(text); // Get the width of the string
       heightOfText = fontSize; // The height of the text is equal to the font size

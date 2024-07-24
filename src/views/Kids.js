@@ -4,7 +4,8 @@ import AppContext from '../context/AppContext';
 import Viktor from './Viktor';
 import Edgar from './Edgar';
 import Fireworks from '../widgets/p5/sketches/fireworks/Index';
-import hamburgSilouhette from '../assets/images/hamburg-skyline-panorama-abstrakt.png';
+import hamburgSilouhette from '../assets/images/hamburg-skyline-panorama-silouhette.png';
+import hamburgReflection from '../assets/images/hamburg-skyline-panorama-reflection.png';
 
 export default function Kids() {
   const { kid, setKid } = useContext(AppContext);
@@ -18,7 +19,6 @@ export default function Kids() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundImage: `linear-gradient(to top, #040348, #000)`,
       }}
     >
       <Box
@@ -33,6 +33,7 @@ export default function Kids() {
       >
         <Box
           sx={{
+            zIndex: 100,
             width: '100%',
             height: 'fit-content',
             display: 'flex',
@@ -49,6 +50,7 @@ export default function Kids() {
         </Box>
         <Box
           sx={{
+            zIndex: 100,
             width: '100%',
             height: 'fit-content',
             display: 'flex',
@@ -64,30 +66,53 @@ export default function Kids() {
           Edgar
         </Box>
       </Box>
-      {/* {kid === 'Viktor' ? <Viktor /> : <Edgar />} */}
-      <img
-        src={hamburgSilouhette}
-        style={{
-          position: 'absolute',
-          zIndex: 0,
-          left: 0,
-          bottom: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'contain',
-          backgroundColor: 'transparent',
-        }}
-        alt="hamburg silouhette"
-        draggable="false"
-      />{' '}
+      {kid === 'Viktor' ? <Viktor /> : <Edgar />}
       <Box
         sx={{
           width: '100%',
           height: '100%',
+          position: 'absolute',
+          zIndex: 1,
           // backgroundColor: 'black',
         }}
       >
         <Fireworks />
+      </Box>
+      <Box sx={{ position: 'absolute', height: 'fit-content', bottom: 0 }}>
+        <Box sx={{ position: 'absolute', height: 'fit-content', bottom: 0 }}>
+          <img
+            src={hamburgSilouhette}
+            style={{
+              // position: 'absolute',
+              zIndex: 0,
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              height: 'fit-content',
+              objectFit: 'contain',
+              backgroundColor: 'transparent',
+            }}
+            alt="hamburg reflection"
+            draggable="false"
+          />
+        </Box>
+        <Box sx={{ position: 'relative', height: 'fit-content', bottom: 0 }}>
+          <img
+            src={hamburgReflection}
+            style={{
+              // position: 'absolute',
+              zIndex: 0,
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              height: 'fit-content',
+              objectFit: 'contain',
+              backgroundColor: 'transparent',
+            }}
+            alt="hamburg reflection"
+            draggable="false"
+          />
+        </Box>
       </Box>
     </Box>
   );
