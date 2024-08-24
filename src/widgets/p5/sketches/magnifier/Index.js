@@ -4,14 +4,14 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from "react";
-import Sketch from "./Sketch";
-import useResizeObserver from "../../../../hooks/useResizeObserver";
-import { Box } from "@mui/material";
-import InFocusContext from "../../../../context/InFocusContext";
+} from 'react';
+import Sketch from './Sketch';
+import useResizeObserver from '../../../../hooks/useResizeObserver';
+import { Box } from '@mui/material';
+// import InFocusContext from "../../../../context/InFocusContext";
 
-export default function Index({}) {
-  const { storyInFocus } = useContext(InFocusContext);
+export default function Index({ image }) {
+  // const { storyInFocus } = useContext(InFocusContext);
   const containerRef = useRef();
   const [dimensions, setDimensions] = useState({
     width: containerRef?.current?.offsetWidth,
@@ -26,7 +26,7 @@ export default function Index({}) {
     containerRef,
     setDimensions,
     handleUserActivity,
-    setIsUserActive,
+    setIsUserActive
   );
 
   const padding = -200;
@@ -37,19 +37,15 @@ export default function Index({}) {
       <Box
         ref={containerRef}
         sx={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <Sketch
-          width={width}
-          height={height}
-          selectedImageUrl={storyInFocus?.basics?.storyImageUrl}
-        />
+        <Sketch width={width} height={height} selectedImageUrl={image} />
       </Box>
     </>
   );

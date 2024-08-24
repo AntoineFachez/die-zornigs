@@ -30,7 +30,7 @@ export default function Texting({
   console.log('windowWidth', windowWidth);
   return (
     <>
-      <Box sx={{ backgroundColor: 'transparent' }}>
+      <Box sx={{ backgroundColor: 'transparent', paddingBottom: '10rem' }}>
         {text && (
           <Sketch
             width={windowWidth}

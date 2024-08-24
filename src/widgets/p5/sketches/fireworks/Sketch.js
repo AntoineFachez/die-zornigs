@@ -28,14 +28,14 @@ export default function Sketch({
         this.t++;
         p.noStroke();
         const count = this.special ? 397 : 251;
-        if (this.t < 160) {
+        if (this.t < p.random(140, 160)) {
           this.pos = p.createVector(
             this.x + p.sin(this.t / 15) * 5,
-            height - this.t * this.v * 2
+            height - this.t * this.v * 1.4
           );
           p.fill(this.c);
           p.circle(this.pos.x, this.pos.y, this.s);
-        } else if (this.t > 200) {
+        } else if (this.t > p.random(175, 195)) {
           const seed = p.random(0, 2100000000);
           p.randomSeed(p.frameCount - this.t);
           for (let i = 0; i < count; i++) {
@@ -62,7 +62,9 @@ export default function Sketch({
         }
       }
       dead() {
-        return this.t > p.random(400, 500);
+        this.pos.y += this.t * 0.0005; // Adjust the 0.01 factor for desired descent speed
+
+        return this.t > p.random(400, 550);
       }
     }
     //  Nothing besides load calls (loadImage, loadJSON, loadFont, loadStrings, etc.) should be inside the preload function.
@@ -85,11 +87,15 @@ export default function Sketch({
       objs = objs.filter((fw) => !fw.dead());
     };
     p.mouseClicked = () => {
-      const c = p.color(
-        p.random(120, 240),
-        p.random(120, 240),
-        p.random(120, 240)
-      );
+      // const c = p.color(
+      //   p.random(120, 240),
+      //   p.random(120, 240),
+      //   p.random(120, 240)
+      // );
+      const hue = p.random(0, 360); // Random hue across the entire spectrum (0-360)
+      const saturation = p.random(120, 240);
+      const brightness = p.random(120, 240);
+      const c = p.color(hue, saturation, brightness);
       objs.push(new Firework(p.mouseX, c));
     };
   };

@@ -3,8 +3,9 @@ import { useRef, useEffect } from 'react';
 import * as p5 from 'p5';
 
 import Vehicle from './Vehicle';
-import font from '../../../../assets/fonts/SendFlowers-Regular.ttf';
-// import font from '../../../../assets/fonts/HelveticaNeueLTStd-Bd.otf';
+// import font from '../../../../assets/fonts/SendFlowers-Regular.ttf';
+// import font from '../../../../assets/fonts/MobileFont.ttf';
+import font from '../../../../assets/fonts/HelveticaNeueLTStd-Bd.otf';
 
 export default function Sketch({
   width,
@@ -65,7 +66,8 @@ export default function Sketch({
           p,
           p5,
           width,
-          height
+          height,
+          points
           // mainObjColor
         );
         vehicles.push(vehicle);
