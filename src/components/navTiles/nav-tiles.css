@@ -1,0 +1,31 @@
+.nav-tiles {
+  z-index: 100;
+  width: fit-content;
+  transform: translate(-130px, 0);
+  transition: 200ms transform ease-in-out;
+}
+.nav-tiles:hover {
+  transform: translate(10px, 0);
+  transition: 200ms transform ease-in-out;
+  color: #333433;
+}
+nav a {
+  height: 100%;
+  transition: 200ms font-size ease-in-out, background-color 200ms ease-in-out;
+  font-size: 1rem;
+
+  background-color: transparent;
+}
+nav a:hover {
+  transition: 200ms font-size ease-in-out, background-color 200ms ease-in-out;
+  font-size: 1.2rem;
+  color: #333433;
+  background-color: #fff;
+  /* background-color: #333433f2; */
+}
+.nav-tiles_anchors {
+  color: '#333433';
+}
+.nav-tiles_anchors:hover {
+  color: 'white';
+}

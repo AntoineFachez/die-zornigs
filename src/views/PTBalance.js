@@ -1,15 +1,57 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import List from '../components/list/List';
 import { data } from '../assets/data/mockData';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import SideBox from '../components/sideBox/SideBox';
+import NavTiles from '../components/navTiles/NavTiles';
+
+import '../globalStyles.css';
+import '../components/card/card.css';
+import '../components/navTiles/nav-tiles.css';
+import '../components/sideBox/side-box.css';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 export default function PTBalance() {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 769px) and (max-width: 1024px)',
+  });
+  console.log(isMobile, isTablet);
+
+  const scrollableContainerRef = useRef(null);
+  const tileRefs = useRef([]);
+  const [activeTile, setActiveTile] = useState(null);
+  // console.log(activeTile);
+  const setTileRefs = useCallback((node, index) => {
+    if (node !== null) {
+      tileRefs.current[index] = { current: node };
+    }
+  }, []);
+
+  const visibleTileIndecies = useIntersectionObserver(tileRefs.current, {
+    root: null,
+    rootMargin: '-50%',
+    threshold: 0,
+  });
+  useEffect(() => {
+    const observedActiveTileIndex = Math.max(...visibleTileIndecies);
+    // console.log(observedActiveTileIndex);
+    const observedActiveTile = document.querySelector(
+      `#tile-${observedActiveTileIndex}`
+    );
+    // console.log(tileRefs.current[observedActiveTileIndex]);
+    setActiveTile(observedActiveTile);
+
+    return () => {};
+  }, [visibleTileIndecies]);
+
   return (
     <Box
       sx={{
+        position: 'relative',
         width: '100%',
         height: '100%',
         display: 'flex',
@@ -17,30 +59,68 @@ export default function PTBalance() {
         justifyContent: 'center',
         alignItems: 'center',
         color: 'white',
-        // overflow: 'scroll',
-        // overflow: 'hidden',
       }}
     >
       <Header data={data} />
-      <Box sx={{ position: 'sticky', width: '100%', top: '0rem', right: 0 }}>
-        <SideBox data={data} />
-      </Box>
       <Box
+        className="nav-tiles"
         sx={{
-          // height: '100%',
-          color: 'white',
-          // height: '100vh',
+          zIndex: 100,
+          position: 'fixed',
+          // top: '50%',
+          // bottom: '50%',
+          left: 0,
+          width: '160px',
           display: 'flex',
+          flexFlow: 'column nowrap',
+          padding: '1rem 0 1rem 1rem',
+        }}
+      >
+        <NavTiles
+          data={data}
+          scrollableContainerRef={scrollableContainerRef}
+          tileRefs={tileRefs}
+          activeTile={activeTile}
+          setActiveTile={setActiveTile}
+        />{' '}
+        {/* <SideBox data={data} /> */}
+      </Box>{' '}
+      <Box
+        ref={scrollableContainerRef}
+        sx={{
+          height: '100vh',
           flexFlow: 'column nowrap',
           justifyContent: 'center',
           alignItems: 'center',
-          overflow: 'hidden',
-          paddingBottom: '4rem',
+          overflow: 'auto',
+          marginTop: '4rem',
+          marginBottom: '4rem',
+          padding: '4rem 0',
         }}
       >
-        <List data={data} />
+        {data.tiles && (
+          <List
+            data={data}
+            visibleTileIndecies={visibleTileIndecies}
+            activeTile={activeTile}
+            tileRefs={tileRefs}
+            setTileRefs={setTileRefs}
+          />
+        )}
       </Box>
-      <Footer data={data} />
+      <Box
+        className="side-box"
+        sx={{
+          zIndex: 100,
+          position: 'fixed',
+          right: 0,
+          height: '3rem',
+          display: 'flex',
+          flexFlow: 'column nowrap',
+        }}
+      >
+        <Footer data={data} />
+      </Box>
     </Box>
   );
 }

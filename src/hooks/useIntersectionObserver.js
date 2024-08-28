@@ -1,54 +1,44 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef, useEffect, useState } from 'react';
 
-function useIntersectionObserver(options) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef(null);
+function useIntersectionObserver(refs, options) {
+  // console.log('fired'); // This will still fire once on initial render
+  const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting);
+    const observer = new IntersectionObserver((entries) => {
+      const newVisibleItems = entries
+        .filter((entry) => entry.isIntersecting)
+        .map((entry) => parseInt(entry.target.dataset.index, 10));
+
+      setVisibleItems(newVisibleItems);
     }, options);
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    // Observe elements initially
+    refs.forEach((ref) => {
+      if (ref && ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
+    const handleScroll = () => {
+      // Re-observe elements on scroll (if needed)
+      refs.forEach((ref) => {
+        if (ref && ref.current) {
+          // You might not need to re-observe here if the browser handles it efficiently
+          // observer.observe(ref.current);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [options.threshold, options.root, options.rootMargin]);
+  }, [refs, options]); // Only re-run if refs or options change
 
-  return [ref, isIntersecting];
+  return visibleItems;
 }
+
 export default useIntersectionObserver;
-//TODO: USAGE:
-{
-  /*import React from 'react';
-import useIntersectionObserver from './useIntersectionObserver';
-
-const App = () => {
-  const [ref, isIntersecting] = useIntersectionObserver({
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5,
-  });
-
-  return (
-    <div>
-      <h1>Intersection Observer Example</h1>
-      <div ref={ref}>
-        {isIntersecting ? (
-          <p>The element is visible in the viewport!</p>
-        ) : (
-          <p>Scroll down to see the element...</p>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default App;
-*/
-}

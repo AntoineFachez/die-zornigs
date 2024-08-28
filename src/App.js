@@ -1,13 +1,13 @@
+import { Box } from '@mui/material';
 import Footer from './views/Footer';
 import Impressum from './views/Impressum';
 import Kids from './views/Kids';
-import { Box } from '@mui/material';
 import PTBalance from './views/PTBalance';
 
 function App() {
   return (
     <Box
-      className="App"
+      className="gradient"
       sx={{
         width: '100vw',
         height: '100vh',

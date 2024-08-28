@@ -1,103 +1,51 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
+import { Box } from '@mui/material';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
 
-export default function Card({ item, i }) {
+export default function Card({
+  index,
+  item,
+  tileRefs,
+  setTileRefs,
+  activeTile,
+}) {
+  const even = index % 2 === 0;
+
+  const handleClick = () => {
+    console.log('clicked');
+  };
+
   return (
     <Box
-      key={i}
+      key={index}
+      id={`tile-${index}`}
+      ref={(node) => setTileRefs(node, index)}
+      // ref={tileRefs.current[index]}
+      data-index={index}
+      className="card-background"
       sx={{
+        // transform:
+        //   activeTile?.id === `tile-${index}` ? 'scale(1)' : 'scale(0.8)',
         position: 'relative',
-        width: '100%',
-        // height: '100%',
-        // maxHeight: '20rem',
         display: 'flex',
         flexFlow: 'column nowrap',
         justifyContent: 'center',
-        alignItems: 'flex-start',
+        alignItems: 'center',
+        borderRadius: '5px',
+        margin: '2rem 10%',
+        // backgroundColor: '#dcc6b2',
+        boxShadow: '-2px -2px 25px 5px #33343380',
       }}
     >
-      {' '}
-      <Typography
-        variant="h4"
-        sx={{
-          zIndex: 100,
-          position: 'sticky',
-          width: '100%',
-          top: '0rem',
-          display: 'flex',
-          flexFlow: 'column nowrap',
-          color: 'black',
-          backgroundColor: '#33343380',
-        }}
-      >
-        {item.header}
-      </Typography>
-      <Box
-        sx={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexFlow: 'row nowrap',
-          padding: '1rem',
-          backgroundColor: '#333433',
-        }}
-      >
-        {' '}
-        <Box
-          sx={{
-            width: item.imageUrl ? '50%' : '100%',
-            height: '100%',
-            display: 'flex',
-            // flexFlow: 'column nowrap',
-            backgroundColor: '#333433',
-          }}
-        >
-          <Typography
-            variant="body1"
-            sx={{
-              position: 'sticky',
-              top: '0rem',
-              minWidth: '20ch',
-              maxWidth: item.imageUrl ? '50ch' : '80ch',
-
-              display: 'flex',
-              flexFlow: 'column nowrap',
-              paddingRight: '1rem',
-              textAlign: 'justify',
-              color: 'black',
-            }}
-          >
-            {item.content}
-          </Typography>{' '}
-        </Box>
-        {item.imageUrl && (
-          <Box
-            sx={{
-              position: 'sticky',
-              top: '0rem',
-              width: '45%',
-              height: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              // flexFlow: 'column nowrap',
-              backgroundColor: '#333433',
-            }}
-          >
-            <img
-              style={{
-                // width: '100%',
-                // height: 'auto',
-                maxWidth: '15rem',
-                maxHeight: '35rem',
-                objectFit: 'cover',
-                borderRadius: '5px',
-              }}
-              src={item.imageUrl}
-              alt={item?.imageAlt}
-            />
-          </Box>
-        )}
-      </Box>
+      <CardHeader index={index} item={item} activeTile={activeTile} />
+      <CardBody
+        index={index}
+        item={item}
+        activeTile={activeTile}
+        even={even}
+        handleClick={handleClick}
+      />
     </Box>
   );
 }
