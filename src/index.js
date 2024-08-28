@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AppProvider } from './context/AppContext';
+import { PTBalanceProvider } from './context/PTBalanceContext';
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';
@@ -11,7 +12,9 @@ import './globalStyles.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AppProvider>
-    <App />
+    <PTBalanceProvider>
+      <App />
+    </PTBalanceProvider>
   </AppProvider>
 );
 

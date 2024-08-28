@@ -1,8 +1,18 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useContext,
+} from 'react';
+import { Box, IconButton, Typography } from '@mui/material';
+import { Close } from '@mui/icons-material';
 import { useMediaQuery } from 'react-responsive';
-import List from '../components/list/List';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import { data } from '../assets/data/mockData';
+import PTBalanceContext from '../context/PTBalanceContext';
+import List from '../components/list/List';
+import Form from '../components/form/Form';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import SideBox from '../components/sideBox/SideBox';
@@ -12,13 +22,15 @@ import '../globalStyles.css';
 import '../components/card/card.css';
 import '../components/navTiles/nav-tiles.css';
 import '../components/sideBox/side-box.css';
-import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import Inquiery from './Inquiery';
 
 export default function PTBalance() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const isTablet = useMediaQuery({
     query: '(min-width: 769px) and (max-width: 1024px)',
   });
+
+  const { showForm, setShowForm, lessonInFocus } = useContext(PTBalanceContext);
   console.log(isMobile, isTablet);
 
   const scrollableContainerRef = useRef(null);
@@ -33,9 +45,10 @@ export default function PTBalance() {
 
   const visibleTileIndecies = useIntersectionObserver(tileRefs.current, {
     root: null,
-    rootMargin: '-50%',
-    threshold: 0,
+    rootMargin: '10%',
+    threshold: 0.4,
   });
+
   useEffect(() => {
     const observedActiveTileIndex = Math.max(...visibleTileIndecies);
     // console.log(observedActiveTileIndex);
@@ -82,33 +95,24 @@ export default function PTBalance() {
           tileRefs={tileRefs}
           activeTile={activeTile}
           setActiveTile={setActiveTile}
-        />{' '}
+        />
         {/* <SideBox data={data} /> */}
-      </Box>{' '}
-      <Box
-        ref={scrollableContainerRef}
-        sx={{
-          height: '100vh',
-          flexFlow: 'column nowrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-          overflow: 'auto',
-          marginTop: '4rem',
-          marginBottom: '4rem',
-          padding: '4rem 0',
-        }}
-      >
-        {data.tiles && (
+      </Box>
+      {showForm ? (
+        <Inquiery />
+      ) : (
+        data.tiles && (
           <List
             data={data}
             visibleTileIndecies={visibleTileIndecies}
+            scrollableContainerRef={scrollableContainerRef}
             activeTile={activeTile}
             tileRefs={tileRefs}
             setTileRefs={setTileRefs}
           />
-        )}
-      </Box>
-      <Box
+        )
+      )}
+      {/* <Box
         className="side-box"
         sx={{
           zIndex: 100,
@@ -120,7 +124,7 @@ export default function PTBalance() {
         }}
       >
         <Footer data={data} />
-      </Box>
+      </Box> */}
     </Box>
   );
 }

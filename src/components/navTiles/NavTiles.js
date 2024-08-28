@@ -1,4 +1,11 @@
-import React, { createRef, useEffect, useRef, useState } from 'react';
+import React, {
+  createRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import PTBalanceContext from '../../context/PTBalanceContext';
 
 export default function NavTiles({
   data,
@@ -7,6 +14,7 @@ export default function NavTiles({
   activeTile,
   setActiveTile,
 }) {
+  const { sessionInFocus, setLessonInFocus } = useContext(PTBalanceContext);
   const [tileRefsReady, setTileRefsReady] = useState(false);
 
   useEffect(() => {
@@ -16,7 +24,7 @@ export default function NavTiles({
     setTileRefsReady(true);
   }, [data.tiles]);
 
-  const handleClick = (index) => {
+  const handleClick = (item, index) => {
     if (
       tileRefsReady &&
       tileRefs.current[index] &&
@@ -31,6 +39,7 @@ export default function NavTiles({
         behavior: 'smooth',
       });
     }
+    setLessonInFocus(item);
   };
   const areTileRefsReady = () => {
     return tileRefs.current.every((ref) => ref.current !== null);
@@ -76,7 +85,7 @@ export default function NavTiles({
             cursor: 'pointer',
             fontFamily: 'Reddit Sans',
           }}
-          onClick={() => handleClick(i)} // Call handleClick on click
+          onClick={() => handleClick(item, i)} // Call handleClick on click
           // ref={tileRefs.current[i]}
         >
           {item.headerShort}

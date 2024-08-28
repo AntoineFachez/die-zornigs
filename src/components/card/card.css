@@ -1,0 +1,14 @@
+.active-tile {
+  transform: scale(1);
+  transition: 900ms transform ease-in-out;
+
+  scroll-snap-align: center;
+  margin: '2rem 10%';
+}
+.inactive-tile {
+  transform: scale(0.9);
+  transition: 400ms transform ease-in-out;
+
+  scroll-snap-align: center;
+  margin: '0';
+}

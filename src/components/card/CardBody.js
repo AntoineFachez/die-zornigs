@@ -12,12 +12,16 @@ export default function CardBody({
 }) {
   return (
     <Box
+      className={`${
+        activeTile?.id === `tile-${index}` ? 'active-tile' : 'inactive-tile'
+      }`}
       sx={{
         position: 'relative',
         width: '100%',
         height: '100%',
         display: 'flex',
         flexFlow: even ? 'row nowrap' : 'row-reverse nowrap',
+        borderRadius: '5px',
         backgroundColor:
           activeTile?.id === `tile-${index}` ? '#dcc6b2' : '#33343360',
       }}
