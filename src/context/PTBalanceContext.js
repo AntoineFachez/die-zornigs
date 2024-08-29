@@ -10,24 +10,26 @@ export const PTBalanceProvider = ({ children }) => {
   const [showForm, setShowForm] = useState(true);
   const [lessonInFocus, setLessonInFocus] = useState(null);
 
-  const [pickedDate, setPickedDate] = useState(dayjs(today));
+  const [inquiryStepIndex, setInquiryStepIndex] = useState(0);
+  const [pickedDateTime, setPickedDateTime] = useState(dayjs(today));
+  // const [pickedTime, setPickedTime] = useState(dayjs(today));
 
-  console.log(today, dayjs(pickedDate).format('YYYY-MM-DD'));
+  // console.log(today, dayjs(pickedDateTime).format('YYYY-MM-DD'));
   const [inquiry, setInquiry] = useState({
     lessonTitle: '',
     userName: 'anthony',
     email: 'anthony.zornig@gmx.de',
     mobileNumer: '015257063563',
     message: '',
-    preferedDate: dayjs(pickedDate).format('YYYY-MM-DD'),
+    preferedDate: dayjs(pickedDateTime).format('YYYY-MM-DD'),
     preferedContact: '',
   });
-  useEffect(() => {
-    setInquiry({
-      ...inquiry,
-      preferedDate: dayjs(pickedDate).format('YYYY-MM-DD'),
-    });
-  }, [pickedDate]);
+  // useEffect(() => {
+  //   setInquiry({
+  //     ...inquiry,
+  //     preferedDate: dayjs(pickedDateTime).format('YYYY-MM-DD'),
+  //   });
+  // }, [pickedDateTime]);
   return (
     <PTBalanceContext.Provider
       value={{
@@ -35,8 +37,12 @@ export const PTBalanceProvider = ({ children }) => {
         setShowForm,
         lessonInFocus,
         setLessonInFocus,
-        pickedDate,
-        setPickedDate,
+        inquiryStepIndex,
+        setInquiryStepIndex,
+        pickedDateTime,
+        setPickedDateTime,
+        // pickedTime,
+        // setPickedTime,
         inquiry,
         setInquiry,
       }}

@@ -49,17 +49,17 @@ export default function PTBalance() {
     threshold: 0.4,
   });
 
-  useEffect(() => {
-    const observedActiveTileIndex = Math.max(...visibleTileIndecies);
-    // console.log(observedActiveTileIndex);
-    const observedActiveTile = document.querySelector(
-      `#tile-${observedActiveTileIndex}`
-    );
-    // console.log(tileRefs.current[observedActiveTileIndex]);
-    setActiveTile(observedActiveTile);
+  // useEffect(() => {
+  //   const observedActiveTileIndex = Math.max(...visibleTileIndecies);
+  //   // console.log(observedActiveTileIndex);
+  //   const observedActiveTile = document.querySelector(
+  //     `#tile-${observedActiveTileIndex}`
+  //   );
+  //   // console.log(tileRefs.current[observedActiveTileIndex]);
+  //   setActiveTile(observedActiveTile);
 
-    return () => {};
-  }, [visibleTileIndecies]);
+  //   return () => {};
+  // }, [visibleTileIndecies]);
 
   return (
     <Box

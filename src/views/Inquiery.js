@@ -61,30 +61,6 @@ export default function Inquiery() {
       >
         {lessonInFocus?.headerShort}
       </Typography>
-      <Typography
-        sx={{
-          width: '100%',
-          maxWidth: '30ch',
-          height: '100%',
-          display: 'flex',
-          flexFlow: 'column nowrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-        dangerouslySetInnerHTML={{
-          __html: lessonInFocus?.inquiryResponse
-            ?.replace(
-              '<lesson>',
-              `<div class="spliced">${lessonInFocus?.headerShort}</div>`
-            )
-            ?.replace(
-              '<contact>',
-              `<strong>${inquiry?.preferedContact}</strong>`
-            )
-            ?.replace('\n', ''),
-        }}
-      />
-      <Typography>und klären ob der {inquiry.preferedDate} passt.</Typography>
       <Form handleCloseForm={handleCloseForm} />
     </Box>
   );
