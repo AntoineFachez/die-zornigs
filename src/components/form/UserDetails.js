@@ -14,6 +14,7 @@ export default function UserDetails({ handlePreferedContact }) {
           flexFlow: 'row nowrap',
           justifyContent: 'flex-end',
           alignItems: 'center',
+          borderRadius: '5px',
         }}
       >
         <legend>Wie willst Du Dich nennen?</legend>
@@ -37,9 +38,11 @@ export default function UserDetails({ handlePreferedContact }) {
           flexFlow: 'row nowrap',
           justifyContent: 'flex-end',
           alignItems: 'center',
+          borderRadius: '5px',
+          fontFamily: 'Reddit Sans',
         }}
       >
-        <legend>Wie soll ich in Kontakt treten?</legend>
+        <legend>Wie soll ich Kontakt aufnehmen?</legend>
         <Box
           sx={{
             width: '100%',
@@ -90,6 +93,7 @@ export default function UserDetails({ handlePreferedContact }) {
               label="Email"
               sx={{
                 maxWidth: '25ch',
+                fontFamily: 'Reddit Sans',
               }}
               size="small"
               className="form-input"
@@ -106,6 +110,7 @@ export default function UserDetails({ handlePreferedContact }) {
               label="Mobile"
               sx={{
                 maxWidth: '25ch',
+                fontFamily: 'Reddit Sans',
               }}
               size="small"
               className="form-input"

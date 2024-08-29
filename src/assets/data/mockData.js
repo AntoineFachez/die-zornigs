@@ -25,6 +25,7 @@ export const data = {
         'https://static.wixstatic.com/media/9d22618a84f444e88901c14271f75a8a.jpg/v1/fill/w_490,h_985,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/9d22618a84f444e88901c14271f75a8a.jpg',
       imageAlt: 'standIn',
       lessonInInquiryResponse: 'Shape & Balance',
+      messageStimulus: '',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
@@ -35,6 +36,8 @@ export const data = {
       imageUrl:
         'https://static.wixstatic.com/media/ef6490_5b1f64c250f8427abafcd7d85b2b04b7~mv2.jpg/v1/fill/w_490,h_841,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/ef6490_5b1f64c250f8427abafcd7d85b2b04b7~mv2.jpg',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
+      messageStimulus:
+        'Du hast Schwangerschaft angeklickt. Wenn Du magst, dann schreib mir doch vor ab, in welchem Monat Du bist und ob Du Dich noch frei beweglich fühlst.',
       lessonInInquiryResponse: 'Sport in der Schwangerschaft',
     },
     {
@@ -44,8 +47,10 @@ export const data = {
         'Yoga zur Rückbildung hilft Dir, nach der Geburt wieder in Deinem Körper anzukommen.<br />Wir widmen uns mit speziellen Übungen dem Beckenboden. Deine Rücken-und Coremuskulatur wird langsam wieder aufgebaut und die Bereiche des Körpers, die durch den Alltag mit Deinem Baby besonders beansprucht sind, werden gestärkt und entspannt.<br />Atemübungen helfen Dir, gelassener die Herausforderungen Deines neuen Alltags zu meistern.<br />Durch richtiges Atmen, lernt dein Köper wieder in die Stabilität zurück, die er braucht um richtig arbeiten zu können. Die natürliche Schwingung von Beckenboden und Zwerchfell wird geschult. Und alle Muskeln die zur Unterstützung des Oberkörpers dienen gestärkt.<br />Für mehr Stabilität und weniger Beschwerden, wie Rückenschmerzen oder Überbelastung des Beckenbodens.<br />Es gibt die Möglichkeit Online via (ZOOM) Mit mir zu trainieren...',
       imageUrl:
         'https://static.wixstatic.com/media/11062b_5303b55c78d94dc19443cbc26c599242~mv2.jpg/v1/fill/w_490,h_1016,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_5303b55c78d94dc19443cbc26c599242~mv2.jpg',
-      inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
       lessonInInquiryResponse: 'Rückbildung',
+      messageStimulus:
+        'Du hast Rückbildung angeklickt. Schreib mir doch, wie alt Dein Kind bereits ist und ob Du es gern mitnehmen möchtest.',
+      inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
       header: 'DAS TRAINING',
@@ -54,6 +59,8 @@ export const data = {
         'Ob Bei Dir Zuhause, im Park oder in dem schönsten Studio Hamburgs, es ist deine entscheidung wie dein Training aussehen soll. Wir können  mit Geräten oder mit eigenem Körpergewicht dein Training gestalten. <br />In der Kaifu-Lodge gibt es für dich die Möglichkeit nach dem Training noch unseren Wellnes Spa Bereich zu nutzen so wie viele andere Angebote, wie zB die Kinderbetreuung und und die Gastronomie und Schwimmbad.<br />Das Training soll ein Ort zu sein, an dem Fitness und Gesundheit im Mittelpunkt stehen. Mein ganzheitlicher Ansatz, betrachtet das große Ganze und kombiniert die besten Aspekte aller Arten von Fitness.<br />Aber aller Anfang ist schwer! Deshalb versuche ich den Einsteig so einfach wie möglich zu machen. Komm vorbei und überzeuge dich selbst!',
       imageUrl: '',
       lessonInInquiryResponse: 'allgemeines Training',
+      messageStimulus:
+        'Du hast freies Training angeklickt. Schreib mir doch schon mal, wonach Dir ist. Lieber draußen Laufen gehen oder im Studio eine Session machen? Oder beides im Wechsel?',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
@@ -64,6 +71,7 @@ export const data = {
       imageUrl:
         'https://static.wixstatic.com/media/11062b_404b34983ba54f16be018eedf69e86a3~mv2.jpg/v1/fill/w_491,h_886,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_404b34983ba54f16be018eedf69e86a3~mv2.jpg',
       lessonInInquiryResponse: 'Sport in den Wechseljahren',
+      messageStimulus: '',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
@@ -74,6 +82,8 @@ export const data = {
       imageUrl:
         'https://static.wixstatic.com/media/11062b_0683f62d416b4d9eac1a1b5cd00df64b~mv2.jpg/v1/fill/w_490,h_660,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/11062b_0683f62d416b4d9eac1a1b5cd00df64b~mv2.jpg',
       lessonInInquiryResponse: 'Yoga',
+      messageStimulus:
+        'Du hast Yoga angeklickt. Schreib mir doch, ob Du gern an Deine Grenzen gehen möchtest oder ob Du nach einem Wohlfühlpaket suchst.',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
@@ -83,6 +93,7 @@ export const data = {
         'Personal Training und Ernährungsberatung können definitiv dazu beitragen, deinen Stoffwechsel anzukurbeln und deine Gesundheit zu verbessern. Durch regelmäßige körperliche Aktivität und eine ausgewogene, gesunde Ernährung kannst du deinen Stoffwechsel positiv beeinflussen. Ernährungsberatung kann dir dabei helfen, die richtigen Übungen und Ernährungsgewohnheiten zu entwickeln, um deine Ziele zu erreichen.<br />Eine gesunde Ernährung besteht aus einer Vielzahl von Nährstoffen, die deinen Stoffwechsel unterstützen und dein Wohlbefinden steigern können. Es ist wichtig, auf eine ausgewogene Ernährung zu achten und regelmäßig Sport zu treiben, um langfristige Ergebnisse zu erzielen.',
       imageUrl: '',
       lessonInInquiryResponse: 'Ernährung',
+      messageStimulus: '',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
   ],

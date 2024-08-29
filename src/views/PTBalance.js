@@ -99,7 +99,18 @@ export default function PTBalance() {
         {/* <SideBox data={data} /> */}
       </Box>
       {showForm ? (
-        <Inquiery />
+        <Box
+          sx={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexFlow: 'column nowrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Inquiery />
+        </Box>
       ) : (
         data.tiles && (
           <List

@@ -30,11 +30,12 @@ export default function Inquiery() {
       sx={{
         width: '100%',
         maxWidth: '60ch',
-        height: 'fit-content',
+        // height: 'fit-content',
+        height: '30rem',
         // maxHeight: '30rem',
         display: 'flex',
         flexFlow: 'column nowrap',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         borderRadius: '5px',
         // backgroundColor: '#dcc6b2',
@@ -69,7 +70,9 @@ export default function Inquiery() {
       {lessonInFocus ? (
         <Form handleCloseForm={handleCloseForm} />
       ) : (
-        <>Bitte wähle einen Kurs aus.</>
+        <Typography sx={{ fontFamily: 'Reddit Sans' }}>
+          Bitte wähle einen Kurs aus.
+        </Typography>
       )}
     </Box>
   );

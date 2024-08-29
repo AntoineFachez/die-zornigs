@@ -1,16 +1,24 @@
 import React, { useContext, useState } from 'react';
 import dayjs from 'dayjs';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { PickersDay } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
 
 import PTBalanceContext from '../../context/PTBalanceContext';
 import { Badge } from '@mui/material';
-import { PickersDay } from '@mui/x-date-pickers';
+
+import './date-time-picker.css';
+
 export default function DateTimePickerValue() {
   const { pickedDateTime, setPickedDateTime } = useContext(PTBalanceContext);
   const [highlightedDays, setHighlightedDays] = useState([1, 2, 15]);
+  const [minTime, setMinTime] = React.useState(
+    dayjs().set('hour', 6).startOf('hour')
+  );
+  const [maxTime, setMaxTime] = React.useState(
+    dayjs().set('hour', 21).startOf('hour')
+  );
 
   function DayIndicator(props) {
     const { highlightedDays = [], day, outsideCurrentMonth, ...other } = props;
@@ -40,36 +48,52 @@ export default function DateTimePickerValue() {
     console.log(newValue);
 
     setPickedDateTime(newValue);
+    setMinTime(newValue.set('hour', 6).startOf('hour'));
+    setMaxTime(newValue.set('hour', 21).startOf('hour'));
   };
   const TextField = () => {};
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
-        <DesktopDateTimePicker
-          orientation="landscape"
-          label="Wähle Wunsch Tag und Uhrzeit"
-          value={pickedDateTime}
-          onChange={(newValue) => handleSetPickedDateTime(newValue)}
-          // slots={{
-          //   day: DayIndicator,
-          //   // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect
-          // }}
-          slotProps={{
-            day: {
-              highlightedDays,
-            },
-          }}
-          // sx={{
-          //   '& .MuiDialogActions-root': {
-          //     // Adjust the selector if needed based on your inspection
-          //     display: 'none',
-          //   },
-          // }}
-          ampm={false} // Set to false for 24-hour format
-          // renderInput={(params) => <TextField {...params} />}
-          format="dddd, DD.MM.YYYY hh:mm"
-        />
-      </DemoContainer>
+      <DesktopDateTimePicker
+        className="date-time-picker"
+        container={document.getElementById('date-time-picker')}
+        classes={{
+          selectedDay: 'my-selected-day-class',
+        }}
+        sx={{
+          width: '100%',
+          margin: '1rem',
+
+          fontFamily: 'Reddit Sans',
+          '& .MuiCalendar-root': {
+            backgroundColor: '#333433',
+          },
+        }}
+        value={pickedDateTime}
+        onChange={(newValue) => handleSetPickedDateTime(newValue)}
+        orientation="landscape"
+        showDaysOutsideCurrentMonth={true}
+        label="Wähle Wunsch Tag und Uhrzeit"
+        ampm={false} // Set to false for 24-hour format
+        // renderInput={(params) => <TextField {...params} />}
+        format="dddd, DD.MM.YYYY HH:mm"
+        minutesStep={15}
+        slots={{
+          day: DayIndicator,
+          // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect
+          // toolbar: 'hello world',
+        }}
+        slotProps={{
+          day: {
+            highlightedDays,
+          },
+        }}
+        // timeStep={{ hours: 1, minutes: 5, seconds: 5 }}
+        disablePast
+        formatDensity="dense"
+        minTime={minTime}
+        maxTime={maxTime}
+      />
     </LocalizationProvider>
   );
 }

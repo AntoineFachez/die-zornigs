@@ -4,7 +4,8 @@ import { TextField } from '@mui/material';
 import PTBalanceContext from '../../context/PTBalanceContext';
 
 export default function MessageBox() {
-  const { inquiry, setInquiry } = useContext(PTBalanceContext);
+  const { lessonInFocus, inquiry, setInquiry } = useContext(PTBalanceContext);
+  console.log(lessonInFocus.messageStimulus);
   return (
     <>
       <fieldset
@@ -14,14 +15,25 @@ export default function MessageBox() {
           flexFlow: 'row nowrap',
           justifyContent: 'flex-end',
           alignItems: 'center',
+          borderRadius: '5px',
+          fontFamily: 'Reddit Sans',
         }}
       >
         <legend>Hast Du noch eine Frage oder Hinweis?</legend>
         <TextField
           className="form-mesage"
           id="outlined-multiline-flexible"
-          sx={{ width: '100%' }}
-          label="Schreib' mir"
+          sx={{ width: '100%', fontFamily: 'Reddit Sans' }}
+          // label={
+          //   lessonInFocus.messageStimulus
+          //     ? lessonInFocus.messageStimulus
+          //     : "Schreib' mir"
+          // }
+          placeholder={
+            lessonInFocus.messageStimulus
+              ? lessonInFocus.messageStimulus
+              : "Schreib' mir"
+          }
           multiline
           // maxRows={4}
           rows={4}
