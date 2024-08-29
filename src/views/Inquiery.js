@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import PTBalanceContext from '../context/PTBalanceContext';
 import { Close } from '@mui/icons-material';
 import Form from '../components/form/Form';
+import dayjs from 'dayjs';
 
 export default function Inquiery() {
   const {
@@ -10,15 +11,19 @@ export default function Inquiery() {
     setShowForm,
     lessonInFocus,
     inquiry,
-    pickedDate,
-    setPickedDate,
+    setInquiry,
+    pickedDateTime,
+    setPickedDateTime,
   } = useContext(PTBalanceContext);
   const handleCloseForm = () => {
     setShowForm(!showForm);
   };
   useEffect(() => {
-    console.log(inquiry, pickedDate);
-  }, [inquiry, pickedDate]);
+    const newInquiry = { ...inquiry, pickedDateTime: pickedDateTime };
+    setInquiry(newInquiry);
+    console.log(dayjs(inquiry.pickedDateTime).format('DD-MM-YYYY hh:mm'));
+  }, [pickedDateTime]);
+
   return (
     <Box
       // className="card-background"
@@ -61,7 +66,11 @@ export default function Inquiery() {
       >
         {lessonInFocus?.headerShort}
       </Typography>
-      <Form handleCloseForm={handleCloseForm} />
+      {lessonInFocus ? (
+        <Form handleCloseForm={handleCloseForm} />
+      ) : (
+        <>Bitte wähle einen Kurs aus.</>
+      )}
     </Box>
   );
 }

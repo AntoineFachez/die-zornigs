@@ -8,7 +8,8 @@ import UserDetails from './UserDetails';
 import MessageBox from './MessageBox';
 
 import './form.css';
-
+import dayjs from 'dayjs';
+import 'dayjs/locale/de';
 export default function Form({ onAddEntry }) {
   const {
     lessonInFocus,
@@ -18,9 +19,9 @@ export default function Form({ onAddEntry }) {
     setInquiryStepIndex,
   } = useContext(PTBalanceContext);
 
-  const handleNextStep = () => {
-    setInquiryStepIndex((prevIndex) => prevIndex + 1);
-  };
+  // const handleNextStep = () => {
+  //   setInquiryStepIndex((prevIndex) => prevIndex + 1);
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -45,8 +46,11 @@ export default function Form({ onAddEntry }) {
   };
 
   const inquireySteps = [
-    { step: 1, component: <UserDetails /> },
-    { step: 2, component: <AppointmentSetter /> },
+    { step: 1, component: <AppointmentSetter /> },
+    {
+      step: 2,
+      component: <UserDetails handlePreferedContact={handlePreferedContact} />,
+    },
     { step: 3, component: <MessageBox /> },
   ];
 
@@ -102,23 +106,45 @@ export default function Form({ onAddEntry }) {
                 display: 'flex',
                 flexFlow: 'column nowrap',
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'flex-start',
               }}
-              dangerouslySetInnerHTML={{
-                __html: lessonInFocus?.inquiryResponse
-                  ?.replace(
-                    '<lesson>',
-                    `<div class="spliced">${lessonInFocus?.headerShort}</div>`
-                  )
-                  ?.replace(
-                    '<contact>',
-                    `<strong>${inquiry?.preferedContact}</strong>`
-                  )
-                  ?.replace('\n', ''),
-              }}
-            />
-            <Typography>
-              und klären ob der {inquiry.preferedDate} passt.
+              // dangerouslySetInnerHTML={{
+              //   __html: lessonInFocus?.inquiryResponse
+              //     ?.replace(
+              //       '<lesson>',
+              //       `<div class="spliced">${lessonInFocus?.headerShort}</div>`
+              //     )
+              //     ?.replace(
+              //       '<contact>',
+              //       `<strong>${inquiry?.preferedContact}</strong>`
+              //     )
+              //     ?.replace('\n', ''),
+              // }}
+            >
+              <Typography sx={{ marginBottom: '1rem' }}>
+                Hallo {inquiry?.userName.toUpperCase()},
+              </Typography>
+              <br />
+              {lessonInFocus?.inquiryResponse
+                ?.replace(
+                  '<lesson>',
+                  `${lessonInFocus?.lessonInInquiryResponse.toUpperCase()}`
+                )
+                ?.replace(
+                  '<contact>',
+                  `${inquiry?.preferedContact.toUpperCase()}`
+                )}{' '}
+              <br /> Wir klären dann, ob der{' '}
+              {dayjs(inquiry.pickedDateTime)
+                .locale('de')
+                .format(`dddd, DD.MM.YYYY [um] hh:mm`)}{' '}
+              passt.
+              <br />
+              Danke für die Anfrage !
+              <br />
+              <Typography sx={{ marginTop: '1rem' }}>
+                Deine Jana Mikuteit
+              </Typography>
             </Typography>
             <Box sx={{ display: 'flex', flexFlow: 'row nowrap' }}>
               <Button

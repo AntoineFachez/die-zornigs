@@ -21,15 +21,10 @@ export const PTBalanceProvider = ({ children }) => {
     email: 'anthony.zornig@gmx.de',
     mobileNumer: '015257063563',
     message: '',
-    preferedDate: dayjs(pickedDateTime).format('YYYY-MM-DD'),
+    pickedDateTime: pickedDateTime,
     preferedContact: '',
   });
-  // useEffect(() => {
-  //   setInquiry({
-  //     ...inquiry,
-  //     preferedDate: dayjs(pickedDateTime).format('YYYY-MM-DD'),
-  //   });
-  // }, [pickedDateTime]);
+
   return (
     <PTBalanceContext.Provider
       value={{

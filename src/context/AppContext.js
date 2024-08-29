@@ -5,7 +5,8 @@ import dayjs, { Dayjs } from 'dayjs';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const today = dayjs().format('YYYY-MM-DD');
+  // const today = dayjs().format('YYYY-MM-DD');
+  const today = new Date();
   const startUp = 'grid';
   const [kid, setKid] = useState(null);
 

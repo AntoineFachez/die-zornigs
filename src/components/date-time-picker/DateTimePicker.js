@@ -36,6 +36,11 @@ export default function DateTimePickerValue() {
       </Badge>
     );
   }
+  const handleSetPickedDateTime = (newValue) => {
+    console.log(newValue);
+
+    setPickedDateTime(newValue);
+  };
   const TextField = () => {};
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -44,25 +49,25 @@ export default function DateTimePickerValue() {
           orientation="landscape"
           label="Wähle Wunsch Tag und Uhrzeit"
           value={pickedDateTime}
-          onChange={(newValue) => setPickedDateTime(newValue)}
-          slots={{
-            day: DayIndicator,
-            // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect
-          }}
+          onChange={(newValue) => handleSetPickedDateTime(newValue)}
+          // slots={{
+          //   day: DayIndicator,
+          //   // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect
+          // }}
           slotProps={{
             day: {
               highlightedDays,
             },
           }}
-          sx={{
-            '& .MuiDialogActions-root': {
-              // Adjust the selector if needed based on your inspection
-              display: 'none',
-            },
-          }}
+          // sx={{
+          //   '& .MuiDialogActions-root': {
+          //     // Adjust the selector if needed based on your inspection
+          //     display: 'none',
+          //   },
+          // }}
           ampm={false} // Set to false for 24-hour format
-          renderInput={(params) => <TextField {...params} />}
-          format="dd. DD.MM.YYYY hh:mm"
+          // renderInput={(params) => <TextField {...params} />}
+          format="dddd, DD.MM.YYYY hh:mm"
         />
       </DemoContainer>
     </LocalizationProvider>
