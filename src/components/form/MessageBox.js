@@ -11,6 +11,7 @@ export default function MessageBox() {
       <fieldset
         style={{
           width: '100%',
+          height: '100%',
           display: 'flex',
           flexFlow: 'row nowrap',
           justifyContent: 'flex-end',
@@ -36,7 +37,7 @@ export default function MessageBox() {
           }
           multiline
           // maxRows={4}
-          rows={4}
+          rows={11}
           value={inquiry.message}
           onChange={(e) => setInquiry({ ...inquiry, message: e.target.value })}
         />

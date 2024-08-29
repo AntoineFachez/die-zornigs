@@ -14,16 +14,22 @@ export const PTBalanceProvider = ({ children }) => {
   const [pickedDateTime, setPickedDateTime] = useState(dayjs(today));
   // const [pickedTime, setPickedTime] = useState(dayjs(today));
 
-  // console.log(today, dayjs(pickedDateTime).format('YYYY-MM-DD'));
   const [inquiry, setInquiry] = useState({
     lessonTitle: '',
     userName: 'anthony',
     email: 'anthony.zornig@gmx.de',
     mobileNumer: '015257063563',
     message: '',
-    pickedDateTime: pickedDateTime,
+    pickedDateTime: '',
     preferedContact: '',
   });
+  useEffect(() => {
+    // setLessonInFocus();
+    setInquiryStepIndex(0);
+    setPickedDateTime();
+
+    return () => {};
+  }, [showForm]);
 
   return (
     <PTBalanceContext.Provider

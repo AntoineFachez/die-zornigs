@@ -40,8 +40,10 @@ export default function BasicDateCalendar() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
-        value={pickedDate}
-        onChange={(newValue) => setPickedDate(newValue)}
+        value={pickedDate ? pickedDate : dayjs('2024-08-2')}
+        onChange={(newValue) =>
+          setPickedDate(newValue ? newValue : dayjs('2024-08-2'))
+        }
         slots={{
           day: DayIndicator,
           // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect

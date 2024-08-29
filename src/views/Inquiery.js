@@ -28,6 +28,7 @@ export default function Inquiery() {
     <Box
       // className="card-background"
       sx={{
+        position: 'relative',
         width: '100%',
         maxWidth: '60ch',
         // height: 'fit-content',
@@ -43,7 +44,10 @@ export default function Inquiery() {
         margin: '0rem 0 3rem 0',
       }}
     >
-      <IconButton onClick={handleCloseForm}>
+      <IconButton
+        sx={{ zIndex: '100', position: 'absolute', top: '0', left: '0' }}
+        onClick={handleCloseForm}
+      >
         <Close />
       </IconButton>{' '}
       <Typography

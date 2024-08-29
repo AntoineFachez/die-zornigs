@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Box, Button, FormControl } from '@mui/material';
+import Divider from '@mui/material/Divider';
 
 import PTBalanceContext from '../../context/PTBalanceContext';
 
@@ -40,13 +41,13 @@ export default function Form({ onAddEntry }) {
   };
 
   const inquirySteps = [
-    { step: 1, component: <AppointmentSetter />, name: 'Datum' },
+    { step: 1, component: <AppointmentSetter />, name: 'Termin' },
     {
       step: 2,
       component: <UserDetails handlePreferedContact={handlePreferedContact} />,
-      name: 'Daten',
+      name: 'Kontakt',
     },
-    { step: 3, component: <MessageBox />, name: 'Nachricht' },
+    { step: 3, component: <MessageBox />, name: 'Hinweise' },
     {
       step: 4,
       component: (
@@ -55,6 +56,15 @@ export default function Form({ onAddEntry }) {
         </>
       ),
       name: 'Abschicken',
+    },
+    {
+      step: 5,
+      component: (
+        <>
+          <InquirySummary />
+        </>
+      ),
+      name: 'Antwort',
     },
   ];
 
@@ -65,36 +75,40 @@ export default function Form({ onAddEntry }) {
         width: '100%',
         height: '100%',
         display: 'flex',
-        flexFlow: 'column nowrap',
+        flexFlow: 'row nowrap',
         justifyContent: 'center',
         alignItems: 'center',
+        margin: '1rem',
       }}
     >
+      <SideBarNav inquirySteps={inquirySteps} />
+      <Divider orientation="vertical" variant="middle" flexItem />{' '}
       <Box
         sx={{
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexFlow: 'row nowrap',
+          flexFlow: 'column nowrap',
           // justifyContent: 'flex-start',
+          justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
-        <SideBarNav inquirySteps={inquirySteps} />
         <Box
           sx={{
-            width: '100%',
+            width: '30ch',
             height: '100%',
             display: 'flex',
             flexFlow: 'column nowrap',
             // justifyContent: 'flex-start',
-            justifyContent: 'space-between',
+            // justifyContent: 'space-between',
+            justifyContent: 'center',
             alignItems: 'center',
           }}
         >
-          {inquirySteps[inquiryStepIndex].component}
-          <FormNavigation inquirySteps={inquirySteps} />
+          {inquirySteps[inquiryStepIndex]?.component}
         </Box>
+        <FormNavigation inquirySteps={inquirySteps} />
       </Box>
     </FormControl>
   );

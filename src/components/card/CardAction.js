@@ -17,7 +17,9 @@ export default function CardAction({ handleClick }) {
         backgroundColor: '#01012320',
       }}
     >
-      <ButtonItem handleClick={handleClick} textContent={'frag an'} />
+      <ButtonItem
+        props={{ handleClick: handleClick, textContent: 'frag an' }}
+      />
     </Box>
   );
 }

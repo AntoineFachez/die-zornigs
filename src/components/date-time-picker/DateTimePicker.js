@@ -5,6 +5,8 @@ import { PickersDay } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
 
+import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
+import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import PTBalanceContext from '../../context/PTBalanceContext';
 import { Badge } from '@mui/material';
 
@@ -47,22 +49,22 @@ export default function DateTimePickerValue() {
   const handleSetPickedDateTime = (newValue) => {
     console.log(newValue);
 
-    setPickedDateTime(newValue);
+    setPickedDateTime(newValue ? newValue : dayjs());
     setMinTime(newValue.set('hour', 6).startOf('hour'));
     setMaxTime(newValue.set('hour', 21).startOf('hour'));
   };
   const TextField = () => {};
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DesktopDateTimePicker
+      <MobileDateTimePicker
         className="date-time-picker"
-        container={document.getElementById('date-time-picker')}
+        // container={document.getElementById('date-time-picker')}
         classes={{
           selectedDay: 'my-selected-day-class',
         }}
         sx={{
           width: '100%',
-          margin: '1rem',
+          // margin: '1rem',
 
           fontFamily: 'Reddit Sans',
           '& .MuiCalendar-root': {
@@ -78,11 +80,11 @@ export default function DateTimePickerValue() {
         // renderInput={(params) => <TextField {...params} />}
         format="dddd, DD.MM.YYYY HH:mm"
         minutesStep={15}
-        slots={{
-          day: DayIndicator,
-          // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect
-          // toolbar: 'hello world',
-        }}
+        // slots={{
+        //   day: DayIndicator,
+        //   // disabled: (day) => dayjs(day).isBefore(dayjs(), 'day'), // no effect
+        //   // toolbar: 'hello world',
+        // }}
         slotProps={{
           day: {
             highlightedDays,
