@@ -1,11 +1,22 @@
-.nav-tiles {
+.nav-tiles-landscape {
   z-index: 100;
   width: fit-content;
   transform: translate(-130px, 0);
   transition: 200ms transform ease-in-out;
 }
-.nav-tiles:hover {
+.nav-tiles-landscape:hover {
   transform: translate(10px, 0);
+  transition: 200ms transform ease-in-out;
+  color: #333433;
+}
+.nav-tiles-portrait {
+  z-index: 100;
+  width: fit-content;
+  transform: translate(0, 250px);
+  transition: 200ms transform ease-in-out;
+}
+.nav-tiles-portrait:hover {
+  transform: translate(0, -0px);
   transition: 200ms transform ease-in-out;
   color: #333433;
 }

@@ -5,6 +5,7 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 
 export default function Card({
+  props,
   index,
   item,
   tileRefs,
@@ -32,6 +33,9 @@ export default function Card({
         // transform:
         //   activeTile?.id === `tile-${index}` ? 'scale(1)' : 'scale(0.8)',
         position: 'relative',
+        // height: '100%',
+        height: !item.imageUrl ? 'fit-content' : '100%',
+        // height: props.isPortrait ? '100%' : 'auto',
         display: 'flex',
         flexFlow: 'column nowrap',
         justifyContent: 'center',
@@ -40,11 +44,18 @@ export default function Card({
 
         // backgroundColor: '#dcc6b2',
         boxShadow: '-2px -2px 25px 5px #33343380',
-        margin: '0rem 0 3rem 0',
+        // margin: '0rem 0 3rem 0',
+        // gap: '4rem',
       }}
     >
-      <CardHeader index={index} item={item} activeTile={activeTile} />
+      <CardHeader
+        props={props}
+        index={index}
+        item={item}
+        activeTile={activeTile}
+      />
       <CardBody
+        props={props}
         index={index}
         item={item}
         activeTile={activeTile}

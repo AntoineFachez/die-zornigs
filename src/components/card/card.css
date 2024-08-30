@@ -1,7 +1,7 @@
 .active-tile {
   transform: scale(1);
   transition: 900ms transform ease-in-out;
-
+  /* height: fit-content; */
   scroll-snap-align: center;
   margin: '2rem 10%';
 }

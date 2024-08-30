@@ -21,7 +21,6 @@ export default function Inquiery() {
   useEffect(() => {
     const newInquiry = { ...inquiry, pickedDateTime: pickedDateTime };
     setInquiry(newInquiry);
-    console.log(dayjs(inquiry.pickedDateTime).format('DD-MM-YYYY hh:mm'));
   }, [pickedDateTime]);
 
   return (

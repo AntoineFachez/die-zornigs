@@ -6,9 +6,11 @@ import React, {
   useState,
 } from 'react';
 import PTBalanceContext from '../../context/PTBalanceContext';
+import { Box } from '@mui/material';
 
 export default function NavTiles({
-  data,
+  props,
+  // data,
   scrollableContainerRef,
   tileRefs,
   activeTile,
@@ -18,11 +20,11 @@ export default function NavTiles({
   const [tileRefsReady, setTileRefsReady] = useState(false);
 
   useEffect(() => {
-    tileRefs.current = Array(data.tiles.length)
+    tileRefs.current = Array(props.data.tiles.length)
       .fill()
       .map((_, i) => tileRefs.current[i] || createRef());
     setTileRefsReady(true);
-  }, [data.tiles]);
+  }, [props.data.tiles]);
 
   const handleClick = (item, index) => {
     if (
@@ -53,44 +55,51 @@ export default function NavTiles({
   });
 
   return (
-    <nav
-      style={{
-        // width: '160px',
-        width: '100%',
-        // width: 'inherit',
-        height: 'auto',
-        display: 'flex',
-        flexFlow: 'column nowrap',
-        justifyContent: 'center',
-        // flexFlow: 'column nowrap',
-        borderRadius: '5px',
-        padding: '0.5rem 0 0.5rem 0',
-
-        backgroundColor: '#333433f2',
-        gap: '1rem',
-        // scrollMarginTop: '60px',
-      }}
+    <Box
+      className={
+        props.isPortrait ? 'nav-tiles-portrait' : 'nav-tiles-landscape'
+      }
+      sx={props.style}
     >
-      {' '}
-      {data.tiles.map((item, i) => (
-        <div
-          className="nav-tiles_anchors reddit-sans-thin"
-          key={i}
-          // href={`#tile-${i}`} // Add an ID to each tile for linking
-          style={{
-            color: '#fff',
-            backgroundColor:
-              activeTile?.id === `tile-${i}` ? '#dcc6b2' : '#000',
-            padding: '0.2rem',
-            cursor: 'pointer',
-            fontFamily: 'Reddit Sans',
-          }}
-          onClick={() => handleClick(item, i)} // Call handleClick on click
-          // ref={tileRefs.current[i]}
-        >
-          {item.headerShort}
-        </div>
-      ))}
-    </nav>
+      <nav
+        style={{
+          // width: '160px',
+          width: '100%',
+          // width: 'inherit',
+          height: 'auto',
+          display: 'flex',
+          flexFlow: 'column nowrap',
+          justifyContent: 'center',
+          // flexFlow: 'column nowrap',
+          borderRadius: '5px',
+          padding: '0.5rem 0 0.5rem 0',
+
+          backgroundColor: '#333433f2',
+          gap: '1rem',
+          // scrollMarginTop: '60px',
+        }}
+      >
+        {' '}
+        {props.data.tiles.map((item, i) => (
+          <div
+            className="nav-tiles_anchors reddit-sans-thin"
+            key={i}
+            // href={`#tile-${i}`} // Add an ID to each tile for linking
+            style={{
+              color: '#fff',
+              backgroundColor:
+                activeTile?.id === `tile-${i}` ? '#dcc6b2' : '#000',
+              padding: '0.2rem',
+              cursor: 'pointer',
+              fontFamily: 'Reddit Sans',
+            }}
+            onClick={() => handleClick(item, i)} // Call handleClick on click
+            // ref={tileRefs.current[i]}
+          >
+            {item.headerShort}
+          </div>
+        ))}
+      </nav>{' '}
+    </Box>
   );
 }

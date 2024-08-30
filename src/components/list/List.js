@@ -4,6 +4,7 @@ import Card from '../card/Card';
 import { Box } from '@mui/material';
 import './list.css';
 export default function List({
+  props,
   data,
   scrollableContainerRef,
   tileRefs,
@@ -29,23 +30,12 @@ export default function List({
     <Box
       className="scroll-container "
       ref={scrollableContainerRef}
-      sx={{
-        height: '100vh',
-        // display: 'flex',
-        flexFlow: 'column nowrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        overflow: 'auto',
-        // marginTop: '4rem',
-        borderRadius: '5px',
-        margin: '4rem 0 8rem 0',
-        overflowX: 'hidden',
-        // padding: '4rem 0',
-      }}
+      sx={props.style}
     >
       {tilesToRender?.map((item, i) => {
         return (
           <Card
+            props={props}
             index={i}
             item={item}
             tileRefs={tileRefs}

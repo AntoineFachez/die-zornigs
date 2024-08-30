@@ -79,6 +79,8 @@
 }
 .card-background {
   background: linear-gradient(to bottom right, #f3e2ca, pink);
+  /* height: fit-content; */
+  /* height: 100%; */
   /* background-color:;
   background-color:#696c64;
   background-color:#2d2824; */

@@ -4,6 +4,7 @@ import CardText from './CardText';
 import CardAction from './CardAction';
 
 export default function CardBody({
+  props,
   index,
   item,
   activeTile,
@@ -19,15 +20,29 @@ export default function CardBody({
         position: 'relative',
         width: '100%',
         height: '100%',
+
         display: 'flex',
         flexFlow: even ? 'row nowrap' : 'row-reverse nowrap',
         borderRadius: '5px',
+        border: 'none',
         backgroundColor:
           activeTile?.id === `tile-${index}` ? '#dcc6b2' : '#33343360',
       }}
     >
-      <CardText item={item} even={even} />
-      <Box sx={{ position: 'sticky', top: '0rem', height: '100%' }}>
+      <CardText props={props} item={item} even={even} />
+      <Box
+        sx={{
+          // zIndex: 100,
+
+          position: props.isPortrait ? 'absolute' : 'sticky',
+          top: props.isPortrait ? '0' : '0rem',
+          width: props.isPortrait ? '100%' : 'auto',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <Box
           sx={{
             zIndex: 100,
@@ -40,18 +55,45 @@ export default function CardBody({
           }}
         >
           <CardAction handleClick={handleClick} even={even} />
+          {/* {props.isPortrait && (
+            <img
+              style={{
+                filter: 'blur(2px)',
+                borderRadius: even ? '0 0 5px 0 ' : '0 0 0 5px',
+
+                border: !item.imageUrl && 'solid transparent 1px',
+              }}
+              src={item.imageUrl}
+              alt={item?.imageAlt}
+            />
+          )}{' '} */}
         </Box>
+        {/* {!props.isPortrait && ( */}
         <img
           style={{
-            width: '100%',
-            height: '100%',
-            maxHeight: '35rem',
-            objectFit: 'cover',
+            filter: props.isPortrait && 'blur(2px) brightness(0.5)',
+            zIndex: 'auto',
+            display: props.isPortrait ? 'absolute' : 'sticky',
+            top: props.isPortrait ? '50%' : '0rem',
+            // width: '100%',
+            width: props.isPortrait ? 'auto' : '100%',
+            height: props.isPortrait ? 'auto' : '100%',
+
+            // minHeight: '20rem',
+            // maxHeight: '45rem',
+            margin: 'auto',
+            // display: 'block',
+            objectFit: props.isPortrait ? 'cover' : 'cover',
+            // objectFit: 'cover',
+
             borderRadius: even ? '0 0 5px 0 ' : '0 0 0 5px',
+
+            border: !item.imageUrl && 'solid transparent 1px',
           }}
           src={item.imageUrl}
           alt={item?.imageAlt}
         />
+        {/* )} */}
       </Box>
     </Box>
   );

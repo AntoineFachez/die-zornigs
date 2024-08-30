@@ -5,11 +5,12 @@ export default function Footer({ data }) {
   return (
     <Box
       sx={{
+        zIndex: 100,
         position: 'fixed',
         bottom: 0,
         height: '3rem',
-        backgroundColor: 'white',
-        color: 'black',
+        display: 'flex',
+        flexFlow: 'column nowrap',
       }}
     >
       hello world

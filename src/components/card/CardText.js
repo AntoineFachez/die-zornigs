@@ -1,14 +1,20 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 
-export default function CardText({ item, even }) {
+export default function CardText({ props, item, even }) {
   return (
     <Box
       sx={{
+        zIndex: props.isPortrait ? 10 : 0,
         position: 'sticky',
         top: '2.4rem',
-        width: item.imageUrl ? '65%' : '100%',
-        height: 'fit-content',
+        width: props.isPortrait ? '100%' : item.imageUrl ? '65%' : '100%',
+        height: props.isPortrait
+          ? '100%'
+          : !item.imageUrl
+          ? 'fit-content'
+          : '100%',
+        // height: props.isPortrait ? '100%' : 'fit-content',
         display: 'flex',
         flexFlow: 'column nowrap',
         justifyContent: 'center',
@@ -20,7 +26,14 @@ export default function CardText({ item, even }) {
           : even
           ? '0 0 0 5px'
           : '0 0 5px 0',
-        backgroundColor: '#fff',
+
+        // backgroundColor: '#fff',
+        backgroundColor: !item.imageUrl
+          ? '#fff'
+          : props.isPortrait
+          ? '#ffffff77'
+          : '#fff',
+        border: 'none',
       }}
     >
       <Typography
@@ -38,15 +51,12 @@ export default function CardText({ item, even }) {
           color: 'black',
           borderRadius: '5px',
           fontFamily: 'Reddit Sans',
+          border: 'none',
         }}
         dangerouslySetInnerHTML={{ __html: item.content }}
       >
         {/* {item.content}{' '} */}
       </Typography>
-      {/* <Button
-          handleClick={handleClick}
-          sx={{ position: 'sticky', top: '3rem' }}
-        />{' '} */}
     </Box>
   );
 }

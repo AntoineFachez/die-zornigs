@@ -3,15 +3,14 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import '../../index.css';
 
-export default function Header({ data }) {
+export default function Header({ props }) {
   return (
     <Box sx={{ zIndex: 100, position: 'fixed', top: 0 }}>
       <Typography
-        variant="h2"
+        variant={props.variant}
         sx={{ fontFamily: 'Julius Sans One' }}
-        // className="julius-sans-one-regular"
       >
-        {data.mainHeader}
+        {props.data.mainHeader}
       </Typography>
     </Box>
   );

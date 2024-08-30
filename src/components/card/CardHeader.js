@@ -1,11 +1,11 @@
 import { Typography } from '@mui/material';
 import React from 'react';
 
-export default function CardHeader({ index, item, activeTile }) {
+export default function CardHeader({ props, index, item, activeTile }) {
   return (
     <Typography
       // className="julius-sans-one-regular "
-      variant="h4"
+      variant={props.isPortrait ? 'h5' : 'h4'}
       sx={{
         zIndex: 10,
         position: 'sticky',
