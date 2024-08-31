@@ -7,29 +7,31 @@ import React, {
 } from 'react';
 import { Box } from '@mui/material';
 
-import { data } from '../assets/data/mockData';
+import { data } from '../../assets/data/mockData';
 
-import AppContext from '../context/AppContext';
-import PTBalanceContext from '../context/PTBalanceContext';
+import AppContext from '../../context/AppContext';
+import PTBalanceContext from '../../context/PTBalanceContext';
 
-import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
-import Form from '../components/form/Form';
-import Footer from '../components/footer/Footer';
-import Header from '../components/header/Header';
+import Form from '../../components/form/Form';
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/headers/Header';
 import Inquiery from './Inquiery';
-import List from '../components/list/List';
-import NavTiles from '../components/navTiles/NavTiles';
-import SideBox from '../components/sideBox/SideBox';
+import List from '../../components/list/List';
+import NavTiles from '../../components/navTiles/NavTiles';
+import SideBox from '../../components/sideBox/SideBox';
 
-import '../globalStyles.css';
-import '../components/card/card.css';
-import '../components/navTiles/nav-tiles.css';
-import '../components/sideBox/side-box.css';
+import '../../globalStyles.css';
+import '../../components/card/card.css';
+import '../../components/navTiles/nav-tiles.css';
+import '../../components/sideBox/side-box.css';
+import LandingPage from './LandingPage';
+import Main from './Main';
 
 export default function PTBalance() {
   const { deviceType, isPortrait } = useContext(AppContext);
-  const { showForm } = useContext(PTBalanceContext);
+  const { appState, showForm } = useContext(PTBalanceContext);
 
   const scrollableContainerRef = useRef(null);
   const tileRefs = useRef([]);
@@ -42,7 +44,7 @@ export default function PTBalance() {
 
   const visibleTileIndecies = useIntersectionObserver(tileRefs.current, {
     root: null,
-    rootMargin: '10%',
+    rootMargin: '0%',
     threshold: 0.4,
   });
 
@@ -72,9 +74,8 @@ export default function PTBalance() {
       <Header
         props={{ data: data, variant: isPortrait ? 'h3' : 'h2' }}
         // data={data}
-      />
-
-      {/* <NavTiles
+      />{' '}
+      <NavTiles
         props={{
           data: data,
           isPortrait: isPortrait,
@@ -103,10 +104,10 @@ export default function PTBalance() {
         tileRefs={tileRefs}
         activeTile={activeTile}
         setActiveTile={setActiveTile}
-      /> */}
+      />
       {/* <SideBox data={data} /> */}
-
-      {showForm ? (
+      {appState === 'landingPage' ? <LandingPage /> : <Main />}
+      {showForm && (
         <Box
           sx={{
             width: '100%',
@@ -119,50 +120,7 @@ export default function PTBalance() {
         >
           <Inquiery />
         </Box>
-      ) : (
-        data.tiles && (
-          <List
-            props={{
-              data: data,
-              isPortrait: isPortrait,
-              style: isPortrait
-                ? {
-                    height: '100vh',
-                    // display: 'flex',
-                    flexFlow: 'column nowrap',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    overflow: 'auto',
-                    // marginTop: '4rem',
-                    borderRadius: '5px',
-                    margin: `3rem 0 4rem 0`,
-                    overflowX: 'hidden',
-                    // padding: '4rem 0',
-                  }
-                : {
-                    height: '100vh',
-                    // display: 'flex',
-                    flexFlow: 'column nowrap',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    overflow: 'auto',
-                    // marginTop: '4rem',
-                    borderRadius: '5px',
-                    margin: `4rem 0 2rem 0`,
-                    overflowX: 'hidden',
-                    // padding: '4rem 0',
-                  },
-            }}
-            data={data}
-            visibleTileIndecies={visibleTileIndecies}
-            scrollableContainerRef={scrollableContainerRef}
-            activeTile={activeTile}
-            tileRefs={tileRefs}
-            setTileRefs={setTileRefs}
-          />
-        )
       )}
-
       {isPortrait && <Footer data={data} />}
     </Box>
   );

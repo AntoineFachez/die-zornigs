@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import Footer from './views/Footer';
 import Impressum from './views/Impressum';
 import Kids from './views/Kids';
-import PTBalance from './views/PTBalance';
+import PTBalance from './views/pt-balance/PTBalance';
 
 function App() {
   return (

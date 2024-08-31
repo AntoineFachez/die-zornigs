@@ -1,14 +1,27 @@
 .active-tile {
   transform: scale(1);
-  transition: 900ms transform ease-in-out;
+  transition: 900ms transform ease-in-out, 1200ms color ease-in-out;
   /* height: fit-content; */
   scroll-snap-align: center;
   margin: '2rem 10%';
+  color: white;
+}
+.active-tile-only-text {
+  transform: scale(1);
+  transition: 900ms transform ease-in-out, 1200ms color ease-in-out;
+  /* height: fit-content; */
+  scroll-snap-align: center;
+  margin: '2rem 10%';
+  color: #7d7d7d;
 }
 .inactive-tile {
   transform: scale(0.9);
-  transition: 400ms transform ease-in-out;
+  transition: 400ms transform ease-in-out, 400ms color ease-in-out;
 
   scroll-snap-align: center;
   margin: '0';
+  color: #7d7d7d;
+  /* color: rgb(143, 143, 143); */
+}
+.inactive-tile-only-text {
 }

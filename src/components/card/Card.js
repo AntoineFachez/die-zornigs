@@ -20,7 +20,8 @@ export default function Card({
     setLessonInFocus(item);
     setShowForm(!showForm);
   };
-
+  const isActiveTile = activeTile?.id === `tile-${index}`;
+  props.isActiveTile = isActiveTile;
   return (
     <Box
       key={index}
@@ -34,7 +35,9 @@ export default function Card({
         //   activeTile?.id === `tile-${index}` ? 'scale(1)' : 'scale(0.8)',
         position: 'relative',
         // height: '100%',
-        height: !item.imageUrl ? 'fit-content' : '100%',
+        height: 'fit-content',
+        // height: !item.imageUrl ? 'fit-content' : '100%',
+
         // height: props.isPortrait ? '100%' : 'auto',
         display: 'flex',
         flexFlow: 'column nowrap',
@@ -44,7 +47,7 @@ export default function Card({
 
         // backgroundColor: '#dcc6b2',
         boxShadow: '-2px -2px 25px 5px #33343380',
-        // margin: '0rem 0 3rem 0',
+        margin: '0rem 0 3rem 0',
         // gap: '4rem',
       }}
     >

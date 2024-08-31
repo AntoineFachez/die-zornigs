@@ -1,0 +1,27 @@
+.landing-page__location-list {
+  transition: margin-top 600ms ease-in-out, margin-bottom 600ms ease-in-out;
+}
+.location-list__active-item {
+  width: 100%;
+  background-color: white;
+  color: hotpink;
+  transition: background-color 1000ms ease-in-out, color 200ms ease-in-out;
+}
+.location-list__inactive-item {
+  width: 100%;
+  background-color: grey;
+  color: white;
+  transition: background-color 1000ms ease-in-out r color 200ms ease-in-out;
+}
+.location-list__active-item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.location-list__active-item:last-child {
+  border-radius: 0 0 5px 5px;
+}
+.location-list__inactive-item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+.location-list__inactive-item:last-child {
+  border-radius: 0 0 5px 5px;
+}

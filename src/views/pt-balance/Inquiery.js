@@ -1,8 +1,8 @@
 import { Box, IconButton, Typography } from '@mui/material';
 import React, { useContext, useEffect } from 'react';
-import PTBalanceContext from '../context/PTBalanceContext';
+import PTBalanceContext from '../../context/PTBalanceContext';
 import { Close } from '@mui/icons-material';
-import Form from '../components/form/Form';
+import Form from '../../components/form/Form';
 import dayjs from 'dayjs';
 
 export default function Inquiery() {

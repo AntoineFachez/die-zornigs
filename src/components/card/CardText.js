@@ -9,11 +9,7 @@ export default function CardText({ props, item, even }) {
         position: 'sticky',
         top: '2.4rem',
         width: props.isPortrait ? '100%' : item.imageUrl ? '65%' : '100%',
-        height: props.isPortrait
-          ? '100%'
-          : !item.imageUrl
-          ? 'fit-content'
-          : '100%',
+        height: '100%',
         // height: props.isPortrait ? '100%' : 'fit-content',
         display: 'flex',
         flexFlow: 'column nowrap',
@@ -37,7 +33,16 @@ export default function CardText({ props, item, even }) {
       }}
     >
       <Typography
-        // className="reddit-sans-thin"
+        // className={!item.imageUrl ? 'active-tile' : 'active-tile-only-text'}
+        className={`${
+          props.isPortrait
+            ? props.isActiveTile
+              ? !item.imageUrl
+                ? 'active-tile-only-text'
+                : 'active-tile'
+              : 'active-tile-only-text'
+            : 'active-tile-only-text'
+        }`}
         variant="body1"
         sx={{
           minWidth: '20ch',
@@ -48,12 +53,18 @@ export default function CardText({ props, item, even }) {
           padding: '0 1rem',
           textAlign: item.imageUrl ? 'center' : 'justify',
           float: 'left',
-          color: 'black',
+          // color:
+          //   //  !item.imageUrl
+          //   //   ? 'black'
+          //   //   :
+          //   props.isActiveTile ? '#333' : '#888',
           borderRadius: '5px',
           fontFamily: 'Reddit Sans',
           border: 'none',
         }}
-        dangerouslySetInnerHTML={{ __html: item.content }}
+        dangerouslySetInnerHTML={{
+          __html: props.isPortrait ? item.contentShort : item.contentLong,
+        }}
       >
         {/* {item.content}{' '} */}
       </Typography>

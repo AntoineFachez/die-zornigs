@@ -19,43 +19,52 @@ export const data = {
     {
       header: 'Back in Shape & in Balance',
       headerShort: 'Shape & Balance',
-      content:
-        'Ein gesunder Lebensstil beginnt mit einem fitten Körper.<br />Mein Ziel ist es, Ihre persönlichen Ziele zu verstehen, ein auf Sie zugeschnittenes Programm zu erstellen und Sie bei jeder Trainingseinheit zu unterstützen.<br /> Ich helfe meinen Kunden im Hamburg, sich nicht nur körperlich, sondern auch in ihrer Lebensweise weiterzuentwickeln.<br />Meine Erfahrung und ganzheitliche Herangehensweise an Gesundheit und Fitness wird dazu beitragen, dass Sie sich bereits in kürzester Zeit großartig fühlen werden.<br />Worauf warten Sie? Ich bin hier, um Ihnen zu helfen. Ziehen Sie Ihre Trainingsschuhe an, packen Sie Ihre Sporttasche und begeben Sie sich auf Ihre Fitness-Reise.<br />Kontaktieren Sie mich noch heute.',
+      contentLong:
+        'Bereit für ein neues Lebensgefühl? Gemeinsam erreichen wir deine Fitnessziele - egal ob du abnehmen, Muskeln aufbauen oder einfach fitter werden möchtest. Ich erstelle ein maßgeschneidertes Programm, das zu dir und deinem Alltag passt, und unterstütze dich auf jedem Schritt deiner Reise. Mit meiner Erfahrung und meinem ganzheitlichen Ansatz wirst du nicht nur körperlich stärker, sondern fühlst dich auch rundum wohler. Worauf warten? Starte jetzt deine Transformation! Vereinbare jetzt dein kostenloses Beratungsgespräch und starte deine Reise zu einem fitteren, gesünderen Leben!',
+      contentShort:
+        'Bereit für mehr Fitness und Wohlbefinden? Ich unterstütze dich mit einem maßgeschneiderten Programm und ganzheitlichem Ansatz. Gemeinsam erreichen wir deine Ziele! Vereinbare jetzt dein kostenloses Beratungsgespräch!',
       imageUrl:
         'https://static.wixstatic.com/media/9d22618a84f444e88901c14271f75a8a.jpg/v1/fill/w_490,h_985,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/9d22618a84f444e88901c14271f75a8a.jpg',
       imageAlt: 'standIn',
       lessonInInquiryResponse: 'Shape & Balance',
-      messageStimulus: '',
+      messageStimulus:
+        'Schön, dass du dich für "Back in Shape & in Balance" interessierst! Erzähl mir doch ein bisschen von deinen Fitnesszielen. Möchtest du abnehmen, Muskeln aufbauen, deine Ausdauer verbessern oder einfach wieder mehr Bewegung in deinen Alltag bringen? Gemeinsam finden wir den perfekten Weg, um deine Ziele zu erreichen und dich rundum wohlzufühlen.',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
       header: 'Schwangerschaft',
       headerShort: 'Schwangerschaft',
-      content:
-        'Jede Schwangerschaft ist für mich ein kleines Wunder.<br />Ich arbeite seit 2008 als Yogalehrerin für Schwangerschaft und Rückbildung und helfe Frauen sich mit Atemübungen, Entspannungstechniken und der genügenen Bewegung, auf sanfte Weise auf den Weg der Geburt zu begeben.<br />Ob in meinen Kursen oder auch als Personaltraining.<br />Kontaktieren Sie mich, um ein Erstgespräch zu vereinbaren. Ich freue mich darauf, Sie kennenzulernen.',
+      contentLong:
+        'Jede Schwangerschaft steht für mich für das Wunder des Lebens.<br />Ich arbeite seit 2008 als Yogalehrerin für Schwangerschaft und Rückbildung für eine entspannte Schwangerschaft: Stärke deinen Körper, finde innere Ruhe und bereite dich sanft auf die Geburt vor. Mit Atemübungen, Entspannungstechniken und speziell angepassten Bewegungen begleite ich dich durch diese besondere Zeit. Entdecke neue Energie und finde dein Gleichgewicht - in Gruppenkursen oder im persönlichen Einzeltraining. Melde dich jetzt für ein kostenloses Kennenlerngespräch an und lass uns gemeinsam starten!',
+      contentShort:
+        'Yoga für eine entspannte Schwangerschaft: Stärke deinen Körper, finde innere Ruhe und bereite dich sanft auf die Geburt vor. Mit Atemübungen, Entspannungstechniken und speziell angepassten Bewegungen begleite ich dich durch diese besondere Zeit. Entdecke neue Energie und finde dein Gleichgewicht - in Gruppenkursen oder im persönlichen Einzeltraining. Melde dich jetzt für ein kostenloses Kennenlerngespräch an und lass uns gemeinsam starten!',
       imageUrl:
         'https://static.wixstatic.com/media/ef6490_5b1f64c250f8427abafcd7d85b2b04b7~mv2.jpg/v1/fill/w_490,h_841,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/ef6490_5b1f64c250f8427abafcd7d85b2b04b7~mv2.jpg',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
       messageStimulus:
-        'Du hast Schwangerschaft angeklickt. Wenn Du magst, dann schreib mir doch vor ab, in welchem Monat Du bist und ob Du Dich noch frei beweglich fühlst.',
+        '"Yoga kann wunderbar auf deine Bedürfnisse in der Schwangerschaft angepasst werden. Schreib mir gerne, in welchem Monat du bist und was du dir von den Stunden erhoffst."',
       lessonInInquiryResponse: 'Sport in der Schwangerschaft',
     },
     {
       header: 'Rückbildung',
       headerShort: 'Rückbildung',
-      content:
-        'Yoga zur Rückbildung hilft Dir, nach der Geburt wieder in Deinem Körper anzukommen.<br />Wir widmen uns mit speziellen Übungen dem Beckenboden. Deine Rücken-und Coremuskulatur wird langsam wieder aufgebaut und die Bereiche des Körpers, die durch den Alltag mit Deinem Baby besonders beansprucht sind, werden gestärkt und entspannt.<br />Atemübungen helfen Dir, gelassener die Herausforderungen Deines neuen Alltags zu meistern.<br />Durch richtiges Atmen, lernt dein Köper wieder in die Stabilität zurück, die er braucht um richtig arbeiten zu können. Die natürliche Schwingung von Beckenboden und Zwerchfell wird geschult. Und alle Muskeln die zur Unterstützung des Oberkörpers dienen gestärkt.<br />Für mehr Stabilität und weniger Beschwerden, wie Rückenschmerzen oder Überbelastung des Beckenbodens.<br />Es gibt die Möglichkeit Online via (ZOOM) Mit mir zu trainieren...',
+      contentLong:
+        'Finde zurück zu deiner Stärke nach der Geburt: Sanftes Yoga hilft dir, deinen Körper liebevoll zu kräftigen und neue Energie zu tanken. Wir stärken deinen Beckenboden, Rücken und deine Körpermitte, lindern Verspannungen und fördern dein inneres Gleichgewicht. Atemübungen schenken dir Ruhe und Gelassenheit für den Alltag mit deinem Baby. Gemeinsam bauen wir Kraft und Stabilität auf, damit du dich wieder rundum wohlfühlst. Ich biete Kurse in Präsenz und online via Zoom an, damit du flexibel trainieren kannst - auch mit deinem Baby! Melde dich gerne für ein kostenloses Beratungsgespräch.',
+      contentShort:
+        'Sanftes Yoga nach der Geburt Stärke deinen Körper, finde innere Ruhe und gewinne neue Energie. Präsenz- und Online-Kurse verfügbar! Melde dich für ein kostenloses Beratungsgespräch an.',
       imageUrl:
         'https://static.wixstatic.com/media/11062b_5303b55c78d94dc19443cbc26c599242~mv2.jpg/v1/fill/w_490,h_1016,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_5303b55c78d94dc19443cbc26c599242~mv2.jpg',
       lessonInInquiryResponse: 'Rückbildung',
       messageStimulus:
-        'Du hast Rückbildung angeklickt. Schreib mir doch, wie alt Dein Kind bereits ist und ob Du es gern mitnehmen möchtest.',
+        'Herzlich willkommen! Ich freue mich, dass du dich für Rückbildungsyoga interessierst. Erzähl mir doch ein bisschen über dich: Wie alt ist dein Baby und möchtest du es gerne zu den Stunden mitbringen? Gibt es bestimmte Bereiche, auf die du dich besonders konzentrieren möchtest, wie zum Beispiel Beckenbodenstärkung, Rückentraining oder Entspannung? Ich bin für dich da und passe die Stunden gerne an deine Bedürfnisse an.',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
       header: 'DAS TRAINING',
       headerShort: 'Training',
-      content:
+      contentLong:
+        'Ob Bei Dir Zuhause, im Park oder in dem schönsten Studio Hamburgs, es ist deine entscheidung wie dein Training aussehen soll. Wir können  mit Geräten oder mit eigenem Körpergewicht dein Training gestalten. <br />In der Kaifu-Lodge gibt es für dich die Möglichkeit nach dem Training noch unseren Wellnes Spa Bereich zu nutzen so wie viele andere Angebote, wie zB die Kinderbetreuung und und die Gastronomie und Schwimmbad.<br />Das Training soll ein Ort zu sein, an dem Fitness und Gesundheit im Mittelpunkt stehen. Mein ganzheitlicher Ansatz, betrachtet das große Ganze und kombiniert die besten Aspekte aller Arten von Fitness.<br />Aber aller Anfang ist schwer! Deshalb versuche ich den Einsteig so einfach wie möglich zu machen. Komm vorbei und überzeuge dich selbst!',
+      contentShort:
         'Ob Bei Dir Zuhause, im Park oder in dem schönsten Studio Hamburgs, es ist deine entscheidung wie dein Training aussehen soll. Wir können  mit Geräten oder mit eigenem Körpergewicht dein Training gestalten. <br />In der Kaifu-Lodge gibt es für dich die Möglichkeit nach dem Training noch unseren Wellnes Spa Bereich zu nutzen so wie viele andere Angebote, wie zB die Kinderbetreuung und und die Gastronomie und Schwimmbad.<br />Das Training soll ein Ort zu sein, an dem Fitness und Gesundheit im Mittelpunkt stehen. Mein ganzheitlicher Ansatz, betrachtet das große Ganze und kombiniert die besten Aspekte aller Arten von Fitness.<br />Aber aller Anfang ist schwer! Deshalb versuche ich den Einsteig so einfach wie möglich zu machen. Komm vorbei und überzeuge dich selbst!',
       imageUrl: '',
       lessonInInquiryResponse: 'allgemeines Training',
@@ -66,19 +75,24 @@ export const data = {
     {
       header: 'Wechseljahre',
       headerShort: 'Wechseljahre',
-      content:
-        'Es ist nicht das Ende, sondern der langsame Beginn von etwas neuem.<br />Der Wechsel wird für viele Frauen leider immer noch negative beschrieben, dabei hat er auch viele schöne Eigenschaften...<br />Es ist großartig, dass du dich um deine Gesundheit und Fitness während der Wechseljahre kümmern möchtest.<br />Personal Training, regelmäßige körperliche Aktivität und eine ausgewogene Ernährung können dabei helfen, die Symptome zu lindern und das allgemeine Wohlbefinden zu verbessern. Es ist wichtig, dass du mit jemanden dem vertraust zusammenarbeitest, die sich mit den spezifischen Bedürfnissen von Frauen in den Wechseljahren auskennt. Gemeinsam könnt ihr ein maßgeschneidertes Trainings- und Ernährungsprogramm entwickeln, das auf deine individuellen Ziele und Bedürfnisse zugeschnitten ist. Denke daran, dass es wichtig ist, auf deinen Körper zu hören und auf Anzeichen von Überlastung oder Unwohlsein zu achten.',
+      contentLong:
+        'Die Wechseljahre markieren einen neuen Lebensabschnitt voller Möglichkeiten! Es ist eine Zeit, in der du dich neu erfinden, deine Prioritäten überdenken und dich auf deine Gesundheit und dein Wohlbefinden konzentrieren kannst. Mit gezieltem Training, ausgewogener Ernährung und einer positiven Einstellung kannst du diese Phase kraftvoll und voller Energie erleben. Ich unterstütze dich dabei, deine Fitnessziele zu erreichen, Beschwerden zu lindern und dein Selbstbewusstsein zu stärken. Gemeinsam entwickeln wir ein maßgeschneidertes Programm, das perfekt auf deine Bedürfnisse in den Wechseljahren abgestimmt ist. Lass uns gemeinsam diese spannende Reise beginnen! Vereinbare jetzt ein kostenloses Beratungsgespräch und entdecke, wie du dich in den Wechseljahren rundum wohl und vital fühlen kannst.',
+      contentShort:
+        'Wechseljahre - Zeit für einen Neuanfang! Stärke deine Gesundheit, finde neue Energie und fühle dich rundum wohl. Vereinbare jetzt dein kostenloses Beratungsgespräch!',
       imageUrl:
         'https://static.wixstatic.com/media/11062b_404b34983ba54f16be018eedf69e86a3~mv2.jpg/v1/fill/w_491,h_886,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_404b34983ba54f16be018eedf69e86a3~mv2.jpg',
       lessonInInquiryResponse: 'Sport in den Wechseljahren',
-      messageStimulus: '',
+      messageStimulus:
+        'Herzlich willkommen! Ich freue mich, dass du dich für ein Trainingsprogramm in den Wechseljahren interessierst. Jede Frau erlebt diese Phase anders. Erzähl mir doch ein bisschen über deine persönlichen Erfahrungen und Ziele. Gibt es bestimmte Beschwerden, die du lindern möchtest, oder möchtest du einfach deine Fitness und dein Wohlbefinden verbessern? Gemeinsam finden wir den besten Weg, um dich in dieser spannenden Lebensphase zu unterstützen.',
       inquiryResponse: `Du interessierst Dich für ${standIn.lesson}. Toll! Schick schnell Deine Anfrage ab und ich melde mich innerhalb der kommenden 24 Stunden per ${standIn.contact} bei Dir.`,
     },
     {
       header: 'Yoga',
       headerShort: 'Yoga',
-      content:
+      contentLong:
         'Der Weg des Yoga ist endlos - er beginnt mit einer Pose und einem Gedanken und entwickelt sich letztlich zu einem endlosen Weg der Entdeckung und des Wachstums. Ich schätze jeden Einzelnen, der an meinen  teilnimmt und freue mich sehr darauf, auch dir dabei zu helfen deine Ziele zu erreichen.',
+      contentShort:
+        'Yoga - Deine Reise zu innerer Ruhe und Stärke. Entdecke die transformative Kraft des Yoga und finde dein persönliches Gleichgewicht. Egal, ob du Anfänger oder erfahrener Yogi bist, ich begleite dich auf deinem Weg. Melde dich jetzt für eine kostenlose Probestunde an und erlebe die positive Wirkung von Yoga!',
       imageUrl:
         'https://static.wixstatic.com/media/11062b_0683f62d416b4d9eac1a1b5cd00df64b~mv2.jpg/v1/fill/w_490,h_660,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/11062b_0683f62d416b4d9eac1a1b5cd00df64b~mv2.jpg',
       lessonInInquiryResponse: 'Yoga',
@@ -89,8 +103,10 @@ export const data = {
     {
       header: 'Ernährung',
       headerShort: 'Ernährung',
-      content:
+      contentLong:
         'Personal Training und Ernährungsberatung können definitiv dazu beitragen, deinen Stoffwechsel anzukurbeln und deine Gesundheit zu verbessern. Durch regelmäßige körperliche Aktivität und eine ausgewogene, gesunde Ernährung kannst du deinen Stoffwechsel positiv beeinflussen. Ernährungsberatung kann dir dabei helfen, die richtigen Übungen und Ernährungsgewohnheiten zu entwickeln, um deine Ziele zu erreichen.<br />Eine gesunde Ernährung besteht aus einer Vielzahl von Nährstoffen, die deinen Stoffwechsel unterstützen und dein Wohlbefinden steigern können. Es ist wichtig, auf eine ausgewogene Ernährung zu achten und regelmäßig Sport zu treiben, um langfristige Ergebnisse zu erzielen.',
+      contentShort:
+        'Personal Training und Ernährungsberatung unterstützen dich dabei, deine Gesundheits- und Fitnessziele zu erreichen. Gemeinsam entwickeln wir einen maßgeschneiderten Plan mit passenden Übungen und Ernährungsgewohnheiten, der deinen Stoffwechsel ankurbelt und dein Wohlbefinden steigert.',
       imageUrl: '',
       lessonInInquiryResponse: 'Ernährung',
       messageStimulus: '',

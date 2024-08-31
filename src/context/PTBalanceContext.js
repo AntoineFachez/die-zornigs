@@ -7,7 +7,8 @@ const PTBalanceContext = createContext();
 
 export const PTBalanceProvider = ({ children }) => {
   const { today } = useContext(AppContext);
-  const [showForm, setShowForm] = useState(true);
+  const [appState, setAppState] = useState('landingPage');
+  const [showForm, setShowForm] = useState(false);
   const [lessonInFocus, setLessonInFocus] = useState(null);
 
   const [inquiryStepIndex, setInquiryStepIndex] = useState(0);
@@ -34,6 +35,8 @@ export const PTBalanceProvider = ({ children }) => {
   return (
     <PTBalanceContext.Provider
       value={{
+        appState,
+        setAppState,
         showForm,
         setShowForm,
         lessonInFocus,

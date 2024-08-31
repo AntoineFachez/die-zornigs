@@ -11,22 +11,31 @@ export default function CardBody({
   even,
   handleClick,
 }) {
+  // console.log('isActiveTile', props.isActiveTile);
   return (
     <Box
       className={`${
-        activeTile?.id === `tile-${index}` ? 'active-tile' : 'inactive-tile'
+        props.isActiveTile
+          ? !item.imageUrl
+            ? 'active-tile-only-text'
+            : 'active-tile'
+          : 'inactive-tile'
       }`}
       sx={{
         position: 'relative',
         width: '100%',
         height: '100%',
-
+        // height: 'calc(100% - 3rem)',
+        // height: props.isPortrait
+        //   ? '100%'
+        //   : !item.imageUrl
+        //   ? 'fit-content'
+        //   : '100%',
         display: 'flex',
         flexFlow: even ? 'row nowrap' : 'row-reverse nowrap',
         borderRadius: '5px',
         border: 'none',
-        backgroundColor:
-          activeTile?.id === `tile-${index}` ? '#dcc6b2' : '#33343360',
+        backgroundColor: props.isActiveTile ? '#dcc6b266' : '#33343360',
       }}
     >
       <CardText props={props} item={item} even={even} />
@@ -72,12 +81,15 @@ export default function CardBody({
         <img
           style={{
             filter: props.isPortrait && 'blur(2px) brightness(0.5)',
+            // opacity: '0.4',
             zIndex: 'auto',
             display: props.isPortrait ? 'absolute' : 'sticky',
             top: props.isPortrait ? '50%' : '0rem',
             // width: '100%',
             width: props.isPortrait ? 'auto' : '100%',
-            height: props.isPortrait ? 'auto' : '100%',
+            minWidth: '40ch',
+            height: '100%',
+            // height: props.isPortrait ? 'auto' : '100%',
 
             // minHeight: '20rem',
             // maxHeight: '45rem',
