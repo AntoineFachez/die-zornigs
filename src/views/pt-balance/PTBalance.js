@@ -14,27 +14,36 @@ import PTBalanceContext from '../../context/PTBalanceContext';
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
-import Form from '../../components/form/Form';
 import Footer from '../../components/footer/Footer';
-import Header from '../../components/headers/Header';
+import Header from '../../components/header/Header';
 import Inquiery from './Inquiery';
-import List from '../../components/list/List';
+import LandingPage from './landing-page/LandingPage';
+import Main from './Main';
 import NavTiles from '../../components/navTiles/NavTiles';
 import SideBox from '../../components/sideBox/SideBox';
 
+import {
+  headerStyles,
+  flexBoxStyles,
+  footerStyles,
+  appBodyStyles,
+} from '../../theme/stylesData';
 import '../../globalStyles.css';
 import '../../components/card/card.css';
 import '../../components/navTiles/nav-tiles.css';
 import '../../components/sideBox/side-box.css';
-import LandingPage from './LandingPage';
-import Main from './Main';
+import NavBar from './NavBar';
+import LogInOut from '../../auth/signUplogIn/Index';
+import UIContext from '../../context/UIContext';
 
 export default function PTBalance() {
   const { deviceType, isPortrait } = useContext(AppContext);
   const { appState, showForm } = useContext(PTBalanceContext);
-
+  const { showDrawer } = useContext(UIContext);
   const scrollableContainerRef = useRef(null);
   const tileRefs = useRef([]);
+  // const scrollableContainerRef = useRef(null);
+  // const tileRefs = useRef([]);
   const [activeTile, setActiveTile] = useState(null);
   const setTileRefs = useCallback((node, index) => {
     if (node !== null) {
@@ -42,14 +51,50 @@ export default function PTBalance() {
     }
   }, []);
 
+  // console.log(deviceType);
+  if (deviceType === 'mobile') {
+    // return null;
+  } else if (deviceType === 'tablet') {
+    // return null;
+  } else if (deviceType === 'desktop') {
+    // return null;
+  }
+
+  const props = { deviceType: deviceType, appState: appState, data: data };
+
   const visibleTileIndecies = useIntersectionObserver(tileRefs.current, {
     root: null,
-    rootMargin: '0%',
-    threshold: 0.4,
+    rootMargin: !isPortrait ? '0%' : '40%',
+    threshold: !isPortrait ? 0.4 : 0.1,
   });
 
+  const switchComponent = () => {
+    switch (appState) {
+      case 'landingPage':
+        return <LandingPage props={props} />;
+      case 'main':
+        return (
+          <Main
+            props={props}
+            setTileRefs={setTileRefs}
+            scrollableContainerRef={scrollableContainerRef}
+            visibleTileIndecies={visibleTileIndecies}
+          />
+        );
+      case 'profile':
+        return <LogInOut props={props} />;
+      case 'inquiry':
+        return (
+          <Box sx={flexBoxStyles}>
+            <Inquiery props={props} />
+          </Box>
+        );
+      default:
+        break;
+    }
+  };
   useEffect(() => {
-    const observedActiveTileIndex = Math.max(...visibleTileIndecies);
+    const observedActiveTileIndex = Math.min(...visibleTileIndecies);
     const observedActiveTile = document.querySelector(
       `#tile-${observedActiveTileIndex}`
     );
@@ -57,71 +102,27 @@ export default function PTBalance() {
 
     return () => {};
   }, [visibleTileIndecies]);
-
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexFlow: 'column nowrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: 'white',
-      }}
-    >
-      <Header
-        props={{ data: data, variant: isPortrait ? 'h3' : 'h2' }}
-        // data={data}
-      />{' '}
-      <NavTiles
-        props={{
-          data: data,
-          isPortrait: isPortrait,
-          style: isPortrait
-            ? {
-                zIndex: 100,
-                position: 'fixed',
-                bottom: 0,
-                width: '160px',
-                display: 'flex',
-                flexFlow: 'column nowrap',
-                padding: '1rem 0 1rem 1rem',
-              }
-            : {
-                zIndex: 100,
-                position: 'fixed',
-                left: 0,
-                width: '160px',
-                display: 'flex',
-                flexFlow: 'column nowrap',
-                padding: '1rem 0 1rem 1rem',
-              },
-        }}
-        // data={data}
-        scrollableContainerRef={scrollableContainerRef}
-        tileRefs={tileRefs}
-        activeTile={activeTile}
-        setActiveTile={setActiveTile}
-      />
-      {/* <SideBox data={data} /> */}
-      {appState === 'landingPage' ? <LandingPage /> : <Main />}
-      {showForm && (
-        <Box
-          sx={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexFlow: 'column nowrap',
-            justifyContent: 'center',
-            alignItems: 'center',
+    <Box sx={{ ...appBodyStyles }}>
+      <Header props={{ ...props, headerStyles: headerStyles }} />
+      {showDrawer && (
+        <NavTiles
+          props={{
+            data: data,
+            deviceType: deviceType,
+            isPortrait: isPortrait,
           }}
-        >
-          <Inquiery />
-        </Box>
+          scrollableContainerRef={scrollableContainerRef}
+          tileRefs={tileRefs}
+          activeTile={activeTile}
+          setActiveTile={setActiveTile}
+        />
       )}
-      {isPortrait && <Footer data={data} />}
+      {/* <SideBox data={data} /> */}
+      {switchComponent()}
+      {props.deviceType === 'mobile' && (
+        <Footer props={{ ...props, footerStyles: footerStyles }} />
+      )}
     </Box>
   );
 }

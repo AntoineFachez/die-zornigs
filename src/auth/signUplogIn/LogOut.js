@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import LogoutIcon from "@mui/icons-material/Logout";
+import React, { useContext, useEffect, useState } from 'react';
+import LogoutIcon from '@mui/icons-material/Logout';
 // import { Box, Button, TextField } from "@material-ui/core";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { signOut } from "firebase/auth";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 // import { AppState } from "../contexts/AppContext";
-import AppContext, { AppState } from "../../context/AppContext";
-import { auth, db } from "../../firebase/firebase";
-import "./log-in.css";
+import AppContext, { AppState } from '../../context/AppContext';
+import { auth, db } from '../../firebase/firebase';
+import './log-in.css';
 import {
   arrayUnion,
   collection,
@@ -16,8 +16,8 @@ import {
   query,
   updateDoc,
   where,
-} from "firebase/firestore";
-import { Box, Button, IconButton } from "@mui/material";
+} from 'firebase/firestore';
+import { Box, Button, IconButton } from '@mui/material';
 // import { AiOutlineConsoleSql } from "react-icons/ai";
 
 export default function LogOut({
@@ -26,14 +26,14 @@ export default function LogOut({
   userInFocus,
   setUserInFocus,
   setAlert,
-  styledComponent,
+  // styledComponent,
 }) {
   // const { setWelcome, logId, setLogId } = useContext(AppContext);
   // const { user, userInFocus, setUserInFocus } = AppState();
   const [loggedOut, setLoggedOut] = useState(false);
 
   const logOut = async () => {
-    const firebaseContext = "users";
+    const firebaseContext = 'users';
     // console.log(userInFocus);
 
     const data = {
@@ -75,8 +75,8 @@ export default function LogOut({
     setUser(null);
     setAlert({
       open: true,
-      type: "success",
-      message: "Logout Successfull !",
+      type: 'success',
+      message: 'Logout Successfull !',
     });
   };
   const updateUser = async (user) => {
@@ -94,7 +94,7 @@ export default function LogOut({
 
     const id = user.uid;
     // console.log(id);
-    const q = query(collection(db, "users"), where("userUid", "==", id));
+    const q = query(collection(db, 'users'), where('userUid', '==', id));
     const querySnapshot = await getDocs(q);
     let uid;
     querySnapshot.forEach((doc) => {
@@ -102,7 +102,7 @@ export default function LogOut({
       // console.log(doc.id, " => ", doc.data());
       uid = doc.id;
     });
-    const newLogInRef = doc(db, "users", uid);
+    const newLogInRef = doc(db, 'users', uid);
     await updateDoc(newLogInRef, data);
 
     const docSnap = await getDoc(newLogInRef);
@@ -124,21 +124,21 @@ export default function LogOut({
     <>
       {user && (
         <IconButton
-          sx={
-            (styledComponent.iconButton,
-            {
-              width: "2.5rem",
-              height: "2.5rem",
-              color: "#eebc1d",
-              backgroundColor: "#333433",
-              "&:hover": { color: "white", backgroundColor: "#eebc1d" },
-            })
-          }
+          // sx={
+          //   (styledComponent.iconButton,
+          //   {
+          //     width: '2.5rem',
+          //     height: '2.5rem',
+          //     color: '#eebc1d',
+          //     backgroundColor: '#333433',
+          //     '&:hover': { color: 'white', backgroundColor: '#eebc1d' },
+          //   })
+          // }
           onClick={logOut}
         >
           <LogoutIcon />
         </IconButton>
-      )}{" "}
+      )}{' '}
     </>
   );
 }

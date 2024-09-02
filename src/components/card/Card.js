@@ -12,12 +12,13 @@ export default function Card({
   setTileRefs,
   activeTile,
 }) {
-  const { showForm, setShowForm, setLessonInFocus } =
+  const { setAppState, showForm, setShowForm, setLessonInFocus } =
     useContext(PTBalanceContext);
   const even = index % 2 === 0;
 
   const handleClick = () => {
     setLessonInFocus(item);
+    setAppState('inquiry');
     setShowForm(!showForm);
   };
   const isActiveTile = activeTile?.id === `tile-${index}`;
@@ -49,6 +50,12 @@ export default function Card({
         boxShadow: '-2px -2px 25px 5px #33343380',
         margin: '0rem 0 3rem 0',
         // gap: '4rem',
+
+        scrollSnapAlign: 'start',
+        // scrollSnapStop: 'always',
+        // scrollPaddingTop: 0,
+        // scrollPaddingInlineStart: 0,
+        scrollMargin: 0,
       }}
     >
       <CardHeader

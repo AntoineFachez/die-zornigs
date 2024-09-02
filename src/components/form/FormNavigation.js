@@ -4,7 +4,7 @@ import { Box, Button, Typography } from '@mui/material';
 import PTBalanceContext from '../../context/PTBalanceContext';
 import ButtonItem from '../button/Button';
 
-export default function FormNavigation({ inquirySteps }) {
+export default function FormNavigation({ props, inquirySteps }) {
   const { inquiryStepIndex, setInquiryStepIndex } =
     useContext(PTBalanceContext);
 

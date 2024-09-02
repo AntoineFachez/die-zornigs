@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import React, {
   createRef,
   useContext,
@@ -6,7 +7,6 @@ import React, {
   useState,
 } from 'react';
 import PTBalanceContext from '../../context/PTBalanceContext';
-import { Box } from '@mui/material';
 
 export default function NavTiles({
   props,
@@ -16,7 +16,8 @@ export default function NavTiles({
   activeTile,
   setActiveTile,
 }) {
-  const { sessionInFocus, setLessonInFocus } = useContext(PTBalanceContext);
+  const { setAppState, sessionInFocus, setLessonInFocus } =
+    useContext(PTBalanceContext);
   const [tileRefsReady, setTileRefsReady] = useState(false);
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function NavTiles({
   }, [props.data.tiles]);
 
   const handleClick = (item, index) => {
+    setAppState('main');
     if (
       tileRefsReady &&
       tileRefs.current[index] &&
@@ -36,8 +38,10 @@ export default function NavTiles({
       setActiveTile(tileRefs.current[index].current);
       // Scroll the scrollable container to the target element
       scrollableContainerRef.current.scrollTo({
-        top: tileRefs.current[index].current.offsetTop - 150, // Scroll to the top of the target element
-
+        top: props.isPortrait
+          ? tileRefs.current[index].current.offsetTop -
+            tileRefs.current[index].current.offsetHeight
+          : tileRefs.current[index].current.offsetTop,
         behavior: 'smooth',
       });
     }
@@ -59,7 +63,28 @@ export default function NavTiles({
       className={
         props.isPortrait ? 'nav-tiles-portrait' : 'nav-tiles-landscape'
       }
-      sx={props.style}
+      sx={
+        props.isPortrait
+          ? {
+              zIndex: 100,
+              position: 'fixed',
+              bottom: 0,
+              width: '160px',
+              display: 'flex',
+              flexFlow: 'column nowrap',
+              padding: '1rem 0 1rem 1rem',
+            }
+          : {
+              zIndex: 100,
+              position: 'fixed',
+              top: '50%',
+              left: 0,
+              width: '160px',
+              display: 'flex',
+              flexFlow: 'column nowrap',
+              padding: '1rem 0 1rem 1rem',
+            }
+      }
     >
       <nav
         style={{

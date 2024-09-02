@@ -14,7 +14,7 @@ import './form.css';
 import ButtonItem from '../button/Button';
 import SideBarNav from './SideBarNav';
 
-export default function Form({ onAddEntry }) {
+export default function Form({ props, onAddEntry }) {
   const { inquiry, setInquiry, inquiryStepIndex, setInquiryStepIndex } =
     useContext(PTBalanceContext);
 
@@ -73,15 +73,17 @@ export default function Form({ onAddEntry }) {
       onSubmit={handleSubmit}
       sx={{
         width: '100%',
-        height: '100%',
+        // height: '100%',
+        // height: 'fit-content',
         display: 'flex',
-        flexFlow: 'row nowrap',
+        flexFlow:
+          props.deviceType === 'desktop' ? 'row nowrap' : 'column nowrap',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '1rem',
+        margin: props.deviceType === 'desktop' ? '1rem' : '',
       }}
     >
-      <SideBarNav inquirySteps={inquirySteps} />
+      <SideBarNav inquirySteps={inquirySteps} props={props} />
       <Divider orientation="vertical" variant="middle" flexItem />{' '}
       <Box
         sx={{
@@ -96,8 +98,10 @@ export default function Form({ onAddEntry }) {
       >
         <Box
           sx={{
+            // transform: 'scale(0.7)',
             width: '30ch',
-            height: '100%',
+            height: 'fit-content',
+            maxHeight: '100%',
             display: 'flex',
             flexFlow: 'column nowrap',
             // justifyContent: 'flex-start',
@@ -108,7 +112,7 @@ export default function Form({ onAddEntry }) {
         >
           {inquirySteps[inquiryStepIndex]?.component}
         </Box>
-        <FormNavigation inquirySteps={inquirySteps} />
+        <FormNavigation inquirySteps={inquirySteps} props={props} />
       </Box>
     </FormControl>
   );

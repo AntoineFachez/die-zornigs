@@ -2,10 +2,6 @@ import { Box } from '@mui/material';
 import React, { useRef } from 'react';
 import './landing-page.css';
 
-// const customFontSize = 16;
-// const customLineSpacing = (customFontSize / 4) * 3;
-// const customnMargin = customFontSize + customLineSpacing / 2;
-
 const LocationList = ({
   listRef,
   locations,
@@ -15,15 +11,6 @@ const LocationList = ({
 }) => {
   const handleLocationClickInternal = (index) => {
     handleLocationClick(index);
-
-    // if (listRef.current) {
-    //   listRef.current.style.marginTop = `-${index * customnMargin}px`;
-    //   listRef.current.style.marginBottom = `${index * customnMargin}px`;
-    //   listRef.current.classList.add('landing-page__location-list');
-    //   setTimeout(() => {
-    //     listRef.current.classList.remove('landing-page__location-list');
-    //   }, 10);
-    // }
   };
 
   return (
@@ -47,7 +34,7 @@ const LocationList = ({
               ? 'location-list__active-item'
               : 'location-list__inactive-item'
           }
-          key={location.location}
+          key={`${location.location + index}`}
           sx={{
             display: 'flex',
             flexFlow: 'column nowrap',

@@ -6,7 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
 
 import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import PTBalanceContext from '../../context/PTBalanceContext';
 import { Badge } from '@mui/material';
 
@@ -56,24 +56,28 @@ export default function DateTimePickerValue() {
   const TextField = () => {};
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <MobileDateTimePicker
+      <StaticDateTimePicker
         className="date-time-picker"
         // container={document.getElementById('date-time-picker')}
+
         classes={{
           selectedDay: 'my-selected-day-class',
         }}
         sx={{
-          width: '100%',
-          // margin: '1rem',
-
-          fontFamily: 'Reddit Sans',
-          '& .MuiCalendar-root': {
-            backgroundColor: '#333433',
-          },
+          height: '100%',
+          // '& .MuiPickersDay-root, .MuiDateCalendar >*': {
+          //   color: '#bbdefb',
+          //   borderRadius: '13px',
+          //   borderWidth: '0px',
+          //   borderColor: '#2196f3',
+          //   border: '0px solid',
+          //   backgroundColor: '#0d47a1',
+          //   fontSize: '10px',
+          // },
         }}
         value={pickedDateTime}
         onChange={(newValue) => handleSetPickedDateTime(newValue)}
-        orientation="landscape"
+        // orientation="landscape"
         showDaysOutsideCurrentMonth={true}
         label="Wähle Wunsch Tag und Uhrzeit"
         ampm={false} // Set to false for 24-hour format

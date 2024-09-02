@@ -1,14 +1,14 @@
 import { Box, Button } from '@mui/material';
 import React, { useContext } from 'react';
-import AppContext from '../context/AppContext';
-import Viktor from './Viktor';
+import AppContext from '../../context/AppContext';
+import Viktor from '../Viktor';
 import Edgar from './Edgar';
-import Fireworks from '../widgets/p5/sketches/fireworks/Index';
-import Footer from './Footer';
+import Fireworks from '../../widgets/p5/sketches/fireworks/Index';
+import Footer from '../Footer';
 
 import birthdayTable from '../assets/images/IMG_0427.jpg';
-import Index from '../widgets/p5/sketches/magnifier/Index';
-import NavBar from './NavBar';
+import Index from '../../widgets/p5/sketches/magnifier/Index';
+import NavBar from '../NavBar';
 export default function Kids() {
   const { kid, setKid } = useContext(AppContext);
 

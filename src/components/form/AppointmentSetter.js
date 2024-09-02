@@ -10,6 +10,8 @@ export default function AppointmentSetter() {
         style={{
           width: '100%',
           height: '100%',
+          // height: 'fit-content',
+          maxHeight: '100%',
           display: 'flex',
           flexFlow: 'column nowrap',
           justifyContent: 'flex-end',
@@ -23,9 +25,11 @@ export default function AppointmentSetter() {
         <Box
           id="date-time-picker"
           sx={{
-            // transform: 'scale(0.7)',
-            width: '100%',
-            height: '100%',
+            // transform: 'scale(0.8)',
+            // width: '100%',
+            width: 'fit-content',
+            // height: '100%',
+            height: 'fit-content',
             // margin: '0',
             // padding: '0',
             // '& .MuiPopper-root': {

@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React from 'react';
 
 export default function ListInSection({ props }) {
@@ -7,9 +7,16 @@ export default function ListInSection({ props }) {
       {props?.list && (
         <ul style={props?.ulStyles}>
           {props?.list.map((item, i) => (
-            <Box key={i} sx={props?.liStyles}>
+            <Button
+              key={i}
+              variant="outlined"
+              sx={{
+                ...props?.textButtonStyles,
+                // '&:hover': {},
+              }}
+            >
               {item.name}
-            </Box>
+            </Button>
           ))}
         </ul>
       )}

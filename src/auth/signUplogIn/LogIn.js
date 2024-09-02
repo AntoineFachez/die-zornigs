@@ -1,22 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { useContext, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 // import { FormControl, Input, Button, TextField } from "@material-ui/core";
 import {
   sendEmailVerification,
   signInWithEmailAndPassword,
-} from "firebase/auth";
+} from 'firebase/auth';
 // import { signOut } from "firebase/auth";
 // import { AppState } from "../contexts/AppContext";
-import AppContext, { AppState } from "../../context/AppContext";
-import { auth, db } from "../../firebase/firebase";
+import AppContext, { AppState } from '../../context/AppContext';
+import { auth, db } from '../../firebase/firebase';
 
-import "./log-in.css";
-import { arrayUnion } from "firebase/firestore";
-import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
+import './log-in.css';
+import { arrayUnion } from 'firebase/firestore';
+import { Box, Button, FormControl, TextField, Typography } from '@mui/material';
 import {
   handleAddDocToSubCollection,
   getDocIdSByValueSearch,
-} from "../../firebase/helperFunctions";
+} from '../../firebase/helperFunctions';
 
 const Login = ({
   users,
@@ -26,29 +26,29 @@ const Login = ({
   setUserInFocus,
   handleClose,
   switchToSignUp,
-  styledComponent,
+  // styledComponent,
 }) => {
   const { alert, setAlert } = AppState();
   // const [loggedIn, setLoggedIn] = useState(false);
   // const { logId, setLogId } = useContext(AppContext);
   const { log, setLog } = useContext(AppContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState();
   const handleSubmit = async (e) => {
     // e.preventDefautl();
     if (!email || !password) {
       setAlert({
         open: true,
-        message: "fill in email and password",
-        type: "error",
+        message: 'fill in email and password',
+        type: 'error',
       });
     }
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password,
+        password
       );
       if (userCredential.user.emailVerified) {
         setUser(userCredential.user);
@@ -62,9 +62,9 @@ const Login = ({
           }),
         };
 
-        const parentCollectionName = "users";
-        const subCollectionName = "logs";
-        const queryField = "userId";
+        const parentCollectionName = 'users';
+        const subCollectionName = 'logs';
+        const queryField = 'userId';
         const searchString = userCredential.user.uid;
         const setItemInFocus = setLog;
         const foundParents = users;
@@ -72,7 +72,7 @@ const Login = ({
           parentCollectionName,
           queryField,
           searchString,
-          foundParents,
+          foundParents
         );
         // console.log("parentCollectionName", parentDoc.parentDoc);
         // users.push(parentDoc.parentDoc);
@@ -84,20 +84,20 @@ const Login = ({
             subCollectionName,
             data,
             setItemInFocus,
-            setError,
+            setError
           );
         setUserInFocus(parentDoc?.parentDoc);
 
         setAlert({
           open: true,
           message: `welcome ${userCredential.user.email}`,
-          type: "success",
+          type: 'success',
         });
       } else {
         setAlert({
           open: true,
           message: `please check your emails before proceeding`,
-          type: "success",
+          type: 'success',
         });
       }
       // window.localStorage.setItem(JSON.stringify("userLogin", userCredential));
@@ -118,28 +118,28 @@ const Login = ({
     <>
       <Box
         sx={{
-          display: "flex",
+          display: 'flex',
           // height: "100%",
-          flexDirection: "column",
-          gap: "1rem",
+          flexDirection: 'column',
+          gap: '1rem',
           // padding: "1rem",
           // backgroundColor: "pink",
         }}
       >
         <TextField
           sx={{
-            width: "100%",
-            display: "flex",
+            width: '100%',
+            display: 'flex',
             // height: "100%",
-            flexDirection: "column",
-            gap: "1rem",
+            flexDirection: 'column',
+            gap: '1rem',
             // alignItems: "stretch",
             // padding: "1rem",
             // backgroundColor: "pink",
           }}
           // sx={styledComponent.textField}
-          size={styledComponent.textField.size}
-          variant={styledComponent.textField.variant}
+          // size={styledComponent.textField.size}
+          // variant={styledComponent.textField.variant}
           placeholder="email"
           type="email"
           label="email"
@@ -149,18 +149,18 @@ const Login = ({
         />
         <TextField
           sx={{
-            width: "100%",
-            display: "flex",
+            width: '100%',
+            display: 'flex',
             // height: "100%",
-            flexDirection: "column",
-            gap: "1rem",
+            flexDirection: 'column',
+            gap: '1rem',
             // alignItems: "stretch",
             // padding: "1rem",
             // backgroundColor: "pink",
           }}
           // sx={styledComponent.textField}
-          size={styledComponent.textField.size}
-          variant={styledComponent.textField.variant}
+          // size={styledComponent.textField.size}
+          // variant={styledComponent.textField.variant}
           placeholder="password"
           type="password"
           label="password"
@@ -174,18 +174,18 @@ const Login = ({
         <p className="signUp-logIn-message">{alert?.message}</p>
         {email && password ? (
           <Button
-            sx={styledComponent.button}
+            // sx={styledComponent.button}
             // style={{ backgroundColor: "grey" }}
             onClick={handleSubmit}
-            variant={styledComponent.button.variant}
+            // variant={styledComponent.button.variant}
           >
             Log In
           </Button>
         ) : (
           <Button
-            sx={styledComponent.button}
+            // sx={styledComponent.button}
             onClick={switchToSignUp}
-            style={{ backgroundColor: "rgba(0,0,0,0)" }}
+            style={{ backgroundColor: 'rgba(0,0,0,0)' }}
           >
             no account yet ?
           </Button>

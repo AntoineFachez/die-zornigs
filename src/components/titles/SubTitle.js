@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function SubHeader({ props }) {
   return (
-    <Typography variant={props.variant} sx={props.subHeaderStyles}>
+    <Typography variant={props.variant} sx={props.subTitleStyles}>
       {props.content}
     </Typography>
   );

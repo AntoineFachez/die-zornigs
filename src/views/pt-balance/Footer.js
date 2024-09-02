@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import React from 'react';
-
+import ImageCaroussell from '../widgets/unsplash/ImageCarrousel';
 export default function Footer() {
   return (
     <Box
@@ -20,6 +20,8 @@ export default function Footer() {
       {/* <Box sx={{ position: 'absolute', height: 'fit-content', bottom: 0 }}> */}
 
       {/* </Box> */}
+
+      <ImageCaroussell />
     </Box>
   );
 }

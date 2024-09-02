@@ -1,12 +1,26 @@
 .active-tile {
+  min-height: 20rem;
   transform: scale(1);
   transition: 900ms transform ease-in-out, 1200ms color ease-in-out;
   /* height: fit-content; */
   scroll-snap-align: center;
   margin: '2rem 10%';
   color: white;
+  /* font-size: 1.2rem; */
+  /* font-weight: 800; */
+}
+.active-tile-header {
+  font-size: 1.8rem;
+  transition: 900ms font-size ease-in-out, 600ms color ease-in-out;
+  color: white;
+}
+.inactive-tile-header {
+  font-size: 1rem;
+  transition: 900ms font-size ease-in-out, 900ms color ease-in-out;
+  color: #474747;
 }
 .active-tile-only-text {
+  min-height: 20rem;
   transform: scale(1);
   transition: 900ms transform ease-in-out, 1200ms color ease-in-out;
   /* height: fit-content; */
@@ -21,6 +35,8 @@
   scroll-snap-align: center;
   margin: '0';
   color: #7d7d7d;
+  /* font-size: 1rem; */
+  /* font-weight: 400; */
   /* color: rgb(143, 143, 143); */
 }
 .inactive-tile-only-text {

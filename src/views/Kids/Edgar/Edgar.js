@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 
-import AppContext from '../context/AppContext';
-import Index from '../widgets/p5/sketches/steeringText/Index';
-import RocketLaunch from '../widgets/p5/sketches/rocketLaunch/Index';
+import AppContext from '../../../context/AppContext';
+import Index from '../../../widgets/p5/sketches/steeringText/Index';
+import RocketLaunch from '../../../widgets/p5/sketches/rocketLaunch/Index';
 import hamburgSilouhette from '../assets/images/hamburg-skyline-panorama-silouhette.png';
 import hamburgReflection from '../assets/images/hamburg-skyline-panorama-reflection.png';
 

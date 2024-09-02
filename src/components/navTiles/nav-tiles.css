@@ -1,5 +1,5 @@
 .nav-tiles-landscape {
-  z-index: 100;
+  z-index: 200;
   width: fit-content;
   transform: translate(-130px, 0);
   transition: 200ms transform ease-in-out;
@@ -10,12 +10,13 @@
   color: #333433;
 }
 .nav-tiles-portrait {
-  z-index: 100;
+  z-index: 200;
   width: fit-content;
   transform: translate(0, 250px);
   transition: 200ms transform ease-in-out;
 }
 .nav-tiles-portrait:hover {
+  z-index: 200;
   transform: translate(0, -0px);
   transition: 200ms transform ease-in-out;
   color: #333433;

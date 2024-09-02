@@ -1,19 +1,12 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
+import PTBalanceContext from '../../context/PTBalanceContext';
+import NavBar from '../../views/pt-balance/NavBar';
 
-export default function Footer({ data }) {
+export default function Footer({ props }) {
   return (
-    <Box
-      sx={{
-        zIndex: 100,
-        position: 'fixed',
-        bottom: 0,
-        height: '3rem',
-        display: 'flex',
-        flexFlow: 'column nowrap',
-      }}
-    >
-      hello world
+    <Box sx={props.footerStyles}>
+      <NavBar props={props} />
     </Box>
   );
 }
