@@ -11,6 +11,7 @@ import { data } from '../../assets/data/mockData';
 
 import AppContext from '../../context/AppContext';
 import PTBalanceContext from '../../context/PTBalanceContext';
+import UIContext from '../../context/UIContext';
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
@@ -18,6 +19,7 @@ import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import Inquiery from './Inquiery';
 import LandingPage from './landing-page/LandingPage';
+import LogInOut from '../../auth/signUplogIn/Index';
 import Main from './Main';
 import NavTiles from '../../components/navTiles/NavTiles';
 import SideBox from '../../components/sideBox/SideBox';
@@ -32,9 +34,6 @@ import '../../globalStyles.css';
 import '../../components/card/card.css';
 import '../../components/navTiles/nav-tiles.css';
 import '../../components/sideBox/side-box.css';
-import NavBar from './NavBar';
-import LogInOut from '../../auth/signUplogIn/Index';
-import UIContext from '../../context/UIContext';
 
 export default function PTBalance() {
   const { deviceType, isPortrait } = useContext(AppContext);
