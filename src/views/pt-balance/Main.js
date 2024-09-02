@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { Box } from '@mui/material';
 
-import { data } from '../../assets/data/mockData';
+import { data } from '../../assets/data/pageData';
 
 import AppContext from '../../context/AppContext';
 import PTBalanceContext from '../../context/PTBalanceContext';

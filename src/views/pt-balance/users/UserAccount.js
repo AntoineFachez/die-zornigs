@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import Index from '../../auth/signUplogIn/Index';
-import { flexBoxStyles } from '../../theme/stylesData';
+import Index from '../../../auth/signUplogIn/Index';
+import { flexBoxStyles } from '../../../theme/stylesData';
 
 export default function UserAccount({ props }) {
   return (

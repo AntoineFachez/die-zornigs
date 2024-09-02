@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { Box } from '@mui/material';
 
-import { data } from '../../assets/data/mockData';
+import { data } from '../../assets/data/pageData';
 
 import AppContext from '../../context/AppContext';
 import PTBalanceContext from '../../context/PTBalanceContext';
@@ -35,7 +35,10 @@ import '../../components/card/card.css';
 import '../../components/navTiles/nav-tiles.css';
 import '../../components/sideBox/side-box.css';
 import UserContext from '../../context/UserContext';
-import UserAccount from './UserAccount';
+import UserAccount from './users/UserAccount';
+import Users from './users/Users';
+import DashBoard from './DashBoard';
+import Sessions from './sessions/Sessions';
 
 export default function PTBalance() {
   const { deviceType, isPortrait } = useContext(AppContext);
@@ -87,6 +90,12 @@ export default function PTBalance() {
         );
       case 'userProfile':
         return <UserAccount props={{ ...props, user: user }} />;
+      case 'dashBoard':
+        return <DashBoard props={props} />;
+      case 'users':
+        return <Users props={props} />;
+      case 'sessions':
+        return <Sessions props={props} />;
       case 'inquiry':
         return <Inquiery props={props} />;
       default:
@@ -124,6 +133,7 @@ export default function PTBalance() {
           ...flexBoxStyles,
           color: 'white',
           // backgroundColor: 'white',
+          padding: '5rem 0',
         }}
       >
         {switchComponent()}

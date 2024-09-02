@@ -1,6 +1,12 @@
 import React, { useContext } from 'react';
 import { IconButton, Stack } from '@mui/material';
-import { AccountCircle, Home, Menu } from '@mui/icons-material';
+import {
+  AccountCircle,
+  Dashboard,
+  Home,
+  LockClock,
+  Menu,
+} from '@mui/icons-material';
 
 import PTBalanceContext from '../../context/PTBalanceContext';
 
@@ -44,6 +50,15 @@ export default function NavBar({ props }) {
         size={props.deviceType === 'desktop' ? 'large' : 'large'}
       >
         <AccountCircle fontSize="inherit" />
+      </IconButton>
+      <IconButton
+        onClick={() => setAppState('sessions')}
+        sx={{
+          ...iconButtonStyles,
+        }}
+        size={props.deviceType === 'desktop' ? 'large' : 'large'}
+      >
+        <LockClock fontSize="inherit" />
       </IconButton>
       {/* <Index props={props} /> */}
     </Stack>
