@@ -1,16 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from 'react';
+import { Button, TextField, Box, Typography } from '@mui/material';
+import { textButtonStyles, textFieldStyles } from '../../theme/stylesData';
 
-import { FormControl, Input, Button, TextField, Box } from "@mui/material";
-import { useState } from "react";
-// import { Snackbar } from '@material-ui/core';
-import { AppState } from "../../context/AppContext";
+import './log-in.css';
 
-// import { app, db, storage } from "../../firebase/firebase-config";
-
-import "./log-in.css";
-// import { styledComponentt } from "../../themes/styledComponentt";
-
-export default function Signup({
+const Signup = ({
   email,
   setEmail,
   password,
@@ -20,88 +14,53 @@ export default function Signup({
   handleClose,
   switchToSignUp,
   setAlert,
-  styledComponent,
-}) {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const { user } = AppState();
-
+  onSubmit,
+}) => {
+  const [error, setError] = useState();
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
   return (
     <>
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          // height: "100%",
-          flexDirection: "column",
-          gap: "1rem",
-          // alignItems: "stretch",
-          // padding: "1rem",
-          // backgroundColor: "pink",
-        }}
-      >
-        <TextField
-          sx={{
-            width: "100%",
-            display: "flex",
-            // height: "100%",
-            flexDirection: "column",
-            gap: "1rem",
-            // alignItems: "stretch",
-            // padding: "1rem",
-            // backgroundColor: "pink",
-          }}
-          size={styledComponent.textField.size}
-          variant={styledComponent.textField.variant}
-          placeholder="email"
-          type="email"
-          label="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          sx={{
-            width: "100%",
-            display: "flex",
-            // height: "100%",
-            flexDirection: "column",
-            gap: "1rem",
-            // alignItems: "stretch",
-            // padding: "1rem",
-            // backgroundColor: "pink",
-          }}
-          size={styledComponent.textField.size}
-          variant={styledComponent.textField.variant}
-          placeholder="password"
-          type="password"
-          label="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <TextField
-          sx={{
-            width: "100%",
-            display: "flex",
-            // height: "100%",
-            flexDirection: "column",
-            gap: "1rem",
-            // alignItems: "stretch",
-            // padding: "1rem",
-            // backgroundColor: "pink",
-          }}
-          size={styledComponent.textField.size}
-          variant={styledComponent.textField.variant}
-          placeholder="password confirmation"
-          type="password"
-          label="confirm password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-      </Box>
-      <Box>
+      <TextField
+        sx={textFieldStyles}
+        placeholder="email"
+        type="email"
+        label="email"
+        value={email}
+        size="small"
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <TextField
+        sx={textFieldStyles}
+        size={'small'}
+        placeholder="password"
+        type="password"
+        label="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <TextField
+        sx={textFieldStyles}
+        size={'small'}
+        placeholder="password confirmation"
+        type="password"
+        label="confirm password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        required
+      />
+      <Box className="form-footer">
+        <Button sx={textButtonStyles} size="small" onClick={onSubmit}>
+          Sign Up
+        </Button>
+        <Typography>{error?.code}</Typography>
+
         <p className="signUp-logIn-message">{alert.message}</p>
       </Box>
     </>
   );
-}
+};
+export default Signup;

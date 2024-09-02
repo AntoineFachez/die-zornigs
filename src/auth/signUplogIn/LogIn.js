@@ -1,27 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-// import { FormControl, Input, Button, TextField } from "@material-ui/core";
 import {
   sendEmailVerification,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-// import { signOut } from "firebase/auth";
-// import { AppState } from "../contexts/AppContext";
-import AppContext, { AppState } from '../../context/AppContext';
-import { auth, db } from '../../firebase/firebase';
-
-import './log-in.css';
-import { arrayUnion } from 'firebase/firestore';
 import { Box, Button, FormControl, TextField, Typography } from '@mui/material';
+import { auth, db } from '../../firebase/firebase';
+import { arrayUnion } from 'firebase/firestore';
+
+import AppContext, { AppState } from '../../context/AppContext';
+
 import {
   handleAddDocToSubCollection,
   getDocIdSByValueSearch,
 } from '../../firebase/helperFunctions';
+import { textButtonStyles, textFieldStyles } from '../../theme/stylesData';
 
+import './log-in.css';
 const Login = ({
   users,
   user,
   setUser,
+  email,
+  setEmail,
+  password,
+  setPassword,
   userInFocus,
   setUserInFocus,
   handleClose,
@@ -29,14 +32,11 @@ const Login = ({
   // styledComponent,
 }) => {
   const { alert, setAlert } = AppState();
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // const { logId, setLogId } = useContext(AppContext);
-  const { log, setLog } = useContext(AppContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState();
+  const { log, setLog } = useContext(AppContext);
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
   const handleSubmit = async (e) => {
-    // e.preventDefautl();
     if (!email || !password) {
       setAlert({
         open: true,
@@ -116,87 +116,33 @@ const Login = ({
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          // height: "100%",
-          flexDirection: 'column',
-          gap: '1rem',
-          // padding: "1rem",
-          // backgroundColor: "pink",
-        }}
-      >
-        <TextField
-          sx={{
-            width: '100%',
-            display: 'flex',
-            // height: "100%",
-            flexDirection: 'column',
-            gap: '1rem',
-            // alignItems: "stretch",
-            // padding: "1rem",
-            // backgroundColor: "pink",
-          }}
-          // sx={styledComponent.textField}
-          // size={styledComponent.textField.size}
-          // variant={styledComponent.textField.variant}
-          placeholder="email"
-          type="email"
-          label="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          // fullWidth
-        />
-        <TextField
-          sx={{
-            width: '100%',
-            display: 'flex',
-            // height: "100%",
-            flexDirection: 'column',
-            gap: '1rem',
-            // alignItems: "stretch",
-            // padding: "1rem",
-            // backgroundColor: "pink",
-          }}
-          // sx={styledComponent.textField}
-          // size={styledComponent.textField.size}
-          // variant={styledComponent.textField.variant}
-          placeholder="password"
-          type="password"
-          label="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          // fullWidth
-        />
-      </Box>
+      <TextField
+        sx={textFieldStyles}
+        placeholder="email"
+        type="email"
+        label="email"
+        value={email}
+        size="small"
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <TextField
+        sx={textFieldStyles}
+        placeholder="password"
+        type="password"
+        label="password"
+        value={password}
+        size="small"
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
       <Box className="form-footer">
+        <Button sx={textButtonStyles} onClick={handleSubmit} size="small">
+          Log In
+        </Button>
         <Typography>{error?.code}</Typography>
         <p className="signUp-logIn-message">{alert?.message}</p>
-        {email && password ? (
-          <Button
-            // sx={styledComponent.button}
-            // style={{ backgroundColor: "grey" }}
-            onClick={handleSubmit}
-            // variant={styledComponent.button.variant}
-          >
-            Log In
-          </Button>
-        ) : (
-          <Button
-            // sx={styledComponent.button}
-            onClick={switchToSignUp}
-            style={{ backgroundColor: 'rgba(0,0,0,0)' }}
-          >
-            no account yet ?
-          </Button>
-        )}
       </Box>
-      {/* )} */}
-      {/* {user ? null : (
-        <button className="signUp-login-btn" onClick={logOut}>
-          Log Out
-        </button>
-      )} */}
     </>
   );
 };

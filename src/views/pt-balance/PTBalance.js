@@ -34,11 +34,16 @@ import '../../globalStyles.css';
 import '../../components/card/card.css';
 import '../../components/navTiles/nav-tiles.css';
 import '../../components/sideBox/side-box.css';
+import UserContext from '../../context/UserContext';
+import UserAccount from './UserAccount';
 
 export default function PTBalance() {
   const { deviceType, isPortrait } = useContext(AppContext);
   const { appState, showForm } = useContext(PTBalanceContext);
   const { showDrawer } = useContext(UIContext);
+  const { user } = useContext(UserContext);
+  console.log('user', user);
+
   const scrollableContainerRef = useRef(null);
   const tileRefs = useRef([]);
   // const scrollableContainerRef = useRef(null);
@@ -80,14 +85,10 @@ export default function PTBalance() {
             visibleTileIndecies={visibleTileIndecies}
           />
         );
-      case 'profile':
-        return <LogInOut props={props} />;
+      case 'userProfile':
+        return <UserAccount props={{ ...props, user: user }} />;
       case 'inquiry':
-        return (
-          <Box sx={flexBoxStyles}>
-            <Inquiery props={props} />
-          </Box>
-        );
+        return <Inquiery props={props} />;
       default:
         break;
     }
@@ -118,7 +119,15 @@ export default function PTBalance() {
         />
       )}
       {/* <SideBox data={data} /> */}
-      {switchComponent()}
+      <Box
+        sx={{
+          ...flexBoxStyles,
+          color: 'white',
+          // backgroundColor: 'white',
+        }}
+      >
+        {switchComponent()}
+      </Box>
       {props.deviceType === 'mobile' && (
         <Footer props={{ ...props, footerStyles: footerStyles }} />
       )}

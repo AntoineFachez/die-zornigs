@@ -7,6 +7,7 @@ import PTBalanceContext from '../../context/PTBalanceContext';
 import { iconButtonStyles } from '../../theme/stylesData';
 import Title from '../../components/titles/Title';
 import UIContext from '../../context/UIContext';
+import Index from '../../auth/signUplogIn/Index';
 
 export default function NavBar({ props }) {
   const { setAppState } = useContext(PTBalanceContext);
@@ -36,7 +37,7 @@ export default function NavBar({ props }) {
         </IconButton>
       )}
       <IconButton
-        onClick={() => setAppState('profile')}
+        onClick={() => setAppState('userProfile')}
         sx={{
           ...iconButtonStyles,
         }}
@@ -44,6 +45,7 @@ export default function NavBar({ props }) {
       >
         <AccountCircle fontSize="inherit" />
       </IconButton>
+      {/* <Index props={props} /> */}
     </Stack>
   );
 }

@@ -62,12 +62,7 @@ export default function Main({
   }, [visibleTileIndecies]);
 
   return (
-    <Box
-      sx={{
-        ...flexBoxStyles,
-        color: 'white',
-      }}
-    >
+    <>
       {data.tiles && (
         <List
           props={{
@@ -105,6 +100,6 @@ export default function Main({
           setTileRefs={setTileRefs}
         />
       )}
-    </Box>
+    </>
   );
 }

@@ -73,7 +73,7 @@ export const iconButtonStyles = {
 };
 export const textButtonStyles = {
   width: 'fit-content',
-  height: '3rem',
+  // height: '3rem',
   // color: '#ccc',
   // color: 'white',
   // color: 'primary',
@@ -159,5 +159,22 @@ export const sectionStyles = {
     padding: 0,
     margin: 0,
     fontFamily: 'Reddit Sans',
+  },
+};
+export const textFieldStyles = {
+  width: '100%',
+  backgroundColor: 'white',
+  color: 'white',
+  borderRadius: '5px',
+  fontFamily: 'Reddit Sans',
+  '& .MuiInputBase-input': {
+    borderRadius: '5px',
+    backgroundColor: '#33343340',
+    color: 'white',
+    fontFamily: 'Reddit Sans',
+  },
+  '& .MuiFormLabel-root': {
+    fontFamily: 'Reddit Sans',
+    color: 'white',
   },
 };
