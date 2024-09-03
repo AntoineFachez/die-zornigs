@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import CardText from './CardText';
 import CardAction from './CardAction';
+import ListInSection from '../section/ListInSection';
 
 export default function CardBody({
   props,
@@ -39,6 +40,7 @@ export default function CardBody({
       }}
     >
       <CardText props={props} item={item} even={even} />
+
       <Box
         sx={{
           // zIndex: 100,
@@ -63,7 +65,11 @@ export default function CardBody({
             alignContent: 'center',
           }}
         >
-          <CardAction handleClick={handleClick} even={even} />
+          {item.list ? (
+            <ListInSection props={item} />
+          ) : (
+            <CardAction handleClick={handleClick} even={even} />
+          )}
           {/* {props.isPortrait && (
             <img
               style={{

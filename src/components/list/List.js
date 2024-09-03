@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Card from '../card/Card';
 import { Box } from '@mui/material';
 import './list.css';
-
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 export default function List({ props }) {
   const {
     data,
@@ -11,11 +11,20 @@ export default function List({ props }) {
     setTileRefs,
     style,
     tileRefs,
-    visibleTileIndecies,
   } = props;
   const amountTiles = data.length;
   const [tilesToRender, setTilesToRender] = useState(data);
   const [activeTile, setActiveTile] = useState(null);
+
+  const visibleTileIndecies = useIntersectionObserver(
+    tileRefs.current,
+    // setActiveTile,
+    {
+      root: null,
+      rootMargin: !isPortrait ? '0%' : '40%',
+      threshold: !isPortrait ? 0.4 : 0.1,
+    }
+  );
   const highestVisibleTileIndex = Math.max(...visibleTileIndecies);
 
   const loadTilesToDisplay = () => {
@@ -25,12 +34,14 @@ export default function List({ props }) {
     );
 
     setActiveTile(observedActiveTile);
+    console.log(observedActiveTile);
 
     if (highestVisibleTileIndex + 1 === amountTiles) {
       console.log('scrollTriggered');
     } else if (highestVisibleTileIndex + 1 > amountTiles) {
     }
   };
+
   useEffect(() => {
     setTilesToRender(data);
 
@@ -39,17 +50,17 @@ export default function List({ props }) {
 
   useEffect(() => {
     loadTilesToDisplay();
-  }, [visibleTileIndecies, data]);
+  }, [data]);
 
-  // useEffect(() => {
-  // const observedActiveTileIndex = Math.min(...visibleTileIndecies);
-  // const observedActiveTile = document.querySelector(
-  //   `#tile-${observedActiveTileIndex}`
-  // );
-  // setActiveTile(observedActiveTile);
-
-  // return () => {};
-  // }, [visibleTileIndecies]);
+  useEffect(() => {
+    const observedActiveTileIndex = Math.min(...visibleTileIndecies);
+    const observedActiveTile = document.querySelector(
+      `#tile-${observedActiveTileIndex}`
+    );
+    setActiveTile(observedActiveTile);
+    // console.log(observedActiveTile);
+    return () => {};
+  }, [visibleTileIndecies]);
   const list = (
     <Box className="scroll-container " ref={scrollableContainerRef} sx={style}>
       {tilesToRender?.map((item, i) => {

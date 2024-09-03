@@ -3,6 +3,8 @@ import { Box } from '@mui/material';
 import PTBalanceContext from '../../context/PTBalanceContext';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
+import ListInSection from '../section/ListInSection';
+import SingleImage from '../../widgets/unsplash/SingleImage';
 
 export default function Card({
   props,
@@ -63,7 +65,22 @@ export default function Card({
         index={index}
         item={item}
         activeTile={activeTile}
-      />
+      />{' '}
+      <Box
+        sx={{
+          zIndex: 0,
+          position: 'absolute',
+          filter: 'blur(2px) brightness(0.7) contrast(110%) grayscale(30%)',
+          height: '100%',
+          borderRadius: '5px',
+          border: 'none',
+        }}
+      >
+        {/* <SingleImage
+          activeSearchTerm={item?.list?.[0]?.searchTerm}
+          props={props}
+        /> */}
+      </Box>
       <CardBody
         props={props}
         index={index}

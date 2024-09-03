@@ -46,7 +46,7 @@ export default function PTBalance() {
   const { appState, showForm } = useContext(PTBalanceContext);
   const { showDrawer } = useContext(UIContext);
   const { user } = useContext(UserContext);
-  // console.log('user', user);
+  const [activeComponent, setActiveComponent] = useState();
 
   const scrollableContainerRef = useRef(null);
   const tileRefs = useRef([]);
@@ -68,46 +68,39 @@ export default function PTBalance() {
     // return null;
   }
 
-  const visibleTileIndecies = useIntersectionObserver(tileRefs.current, {
-    root: null,
-    rootMargin: !isPortrait ? '0%' : '40%',
-    threshold: !isPortrait ? 0.4 : 0.1,
-  });
-
   const styledCard = isPortrait
     ? {
         // ...flexBoxStyles,
         height: '100vh',
+        borderRadius: '5px',
+        overflowX: 'hidden',
+        // margin: `3rem 0 4rem 0`,
         // display: 'flex',
 
-        overflow: 'auto',
         // marginTop: '4rem',
-        borderRadius: '5px',
-        margin: `3rem 0 4rem 0`,
-        overflowX: 'hidden',
         // padding: '4rem 0',
       }
     : {
         // ...flexBoxStyles,
         height: '100vh',
-        overflow: 'auto',
-        // marginTop: '4rem',
         borderRadius: '5px',
-        // margin: `4rem 0 2rem 0`,
         overflowX: 'hidden',
+        // marginTop: '4rem',
+        // margin: `4rem 0 2rem 0`,
         // padding: '4rem 0',
       };
   const props = {
     deviceType: deviceType,
     appState: appState,
-    visibleTileIndecies: visibleTileIndecies,
     tileRefs: tileRefs,
     setTileRefs: setTileRefs,
+    activeTile: activeTile,
+    setActiveTile: setActiveTile,
     scrollableContainerRef: scrollableContainerRef,
     isPortrait: isPortrait,
-    activeTile: activeTile,
     style: styledCard,
   };
+
   const switchComponent = () => {
     switch (appState) {
       case 'landingPage':
@@ -145,20 +138,17 @@ export default function PTBalance() {
     }
   };
   useEffect(() => {
-    const observedActiveTileIndex = Math.min(...visibleTileIndecies);
-    const observedActiveTile = document.querySelector(
-      `#tile-${observedActiveTileIndex}`
-    );
-    setActiveTile(observedActiveTile);
-
+    setActiveComponent(switchComponent());
     return () => {};
-  }, [visibleTileIndecies]);
+  }, [appState]);
+
   return (
     <Box sx={{ ...appBodyStyles }}>
       <Header props={{ ...props, data: data, headerStyles: headerStyles }} />
       {showDrawer && (
         <NavTiles
           props={{
+            ...props,
             data: data,
             deviceType: deviceType,
             isPortrait: isPortrait,
@@ -178,7 +168,8 @@ export default function PTBalance() {
           padding: '5rem 0',
         }}
       >
-        {switchComponent()}
+        {/* {switchComponent()} */}
+        {activeComponent}
       </Box>
       {props.deviceType === 'mobile' && (
         <Footer props={{ ...props, footerStyles: footerStyles }} />

@@ -1,25 +1,22 @@
-import { Box, Button } from '@mui/material';
 import React from 'react';
+import { Box, Button } from '@mui/material';
+import { ulStyles } from '../../theme/stylesData';
 
-export default function ListInSection({ props }) {
+export default function ListInCard({ props }) {
   return (
-    <>
-      {props?.list && (
-        <ul style={props?.ulStyles}>
-          {props?.list.map((item, i) => (
-            <Button
-              key={i}
-              variant="outlined"
-              sx={{
-                ...props?.textButtonStyles,
-                // '&:hover': {},
-              }}
-            >
-              {item.name}
-            </Button>
-          ))}
-        </ul>
-      )}
-    </>
+    <ul style={ulStyles}>
+      {props?.list.map((item, i) => (
+        <Button
+          key={i}
+          variant="outlined"
+          sx={{
+            ...props?.textButtonStyles,
+            // '&:hover': {},
+          }}
+        >
+          {item.name}
+        </Button>
+      ))}
+    </ul>
   );
 }

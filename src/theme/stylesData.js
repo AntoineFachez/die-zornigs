@@ -131,20 +131,7 @@ export const sectionStyles = {
     fontFamily: 'Julius Sans One',
     fontSize: '1.2rem',
   },
-  ulStyles: {
-    width: 'fit-content',
-    display: 'flex',
-    flexFlow: 'row wrap',
-    // flexFlow: 'column nowrap',
-    // justifyContent: 'flex-start',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // alignItems: 'flex-start',
-    padding: 0,
-    margin: 0,
-    gap: '1rem',
-    // backgroundColor: 'white',
-  },
+
   liStyles: {
     padding: 0,
     margin: 0,
@@ -160,6 +147,20 @@ export const sectionStyles = {
     margin: 0,
     fontFamily: 'Reddit Sans',
   },
+};
+export const ulStyles = {
+  width: '100%',
+  display: 'flex',
+  flexFlow: 'row wrap',
+  // flexFlow: 'column nowrap',
+  // justifyContent: 'flex-start',
+  justifyContent: 'center',
+  alignItems: 'center',
+  // alignItems: 'flex-start',
+  padding: 0,
+  margin: 0,
+  gap: '1rem',
+  // backgroundColor: 'white',
 };
 export const textFieldStyles = {
   width: '100%',

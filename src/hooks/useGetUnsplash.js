@@ -18,23 +18,27 @@ function useGetUnsplash(activeSearchTerm, images, setImages) {
     setQueryUnsplash(activeSearchTerm);
   }, [activeSearchTerm, setQueryUnsplash]);
 
-  useEffect(() => {
-    setTimeout(async () => {
-      const data = await getImagesByQuery(activeSearchTerm, setError, error);
-      // console.log(data);
-      setImages(data);
-    }, 30);
-  }, [
-    !activeSearchTerm === undefined,
-    // images === undefined ||
-    // images.length === 0,
-  ]);
+  useEffect(
+    () => {
+      setTimeout(async () => {
+        // const data = await getImagesByQuery(activeSearchTerm, setError, error);
+        // console.log(data);
+        // setImages(data);
+      }, 30);
+    },
+    [
+      // !activeSearchTerm === undefined,
+      // images === undefined ||
+      // images.length === 0,
+    ]
+  );
 
   useEffect(() => {
     const lsItemName = 'images: ' + activeSearchTerm;
     localStorage.setItem(lsItemName, JSON.stringify(images));
     return () => {};
   }, [images]);
+
   return images;
 }
 export default useGetUnsplash;

@@ -18,7 +18,7 @@ export const data = {
 
   landingPageSections: [
     {
-      sectionName: 'Lebensabschnitt',
+      header: 'Lebensabschnitt',
       list: [
         {
           name: 'Schwangerschaft',
@@ -41,7 +41,7 @@ export const data = {
       ],
     },
     {
-      sectionName: 'Arten',
+      header: 'Arten',
       list: [
         { name: 'Mit Geräten', searchTerm: 'sport with devices' },
         {
@@ -52,7 +52,7 @@ export const data = {
     },
 
     {
-      sectionName: 'Orte',
+      header: 'Orte',
       list: [
         {
           location: 'park',
@@ -78,7 +78,7 @@ export const data = {
       ],
     },
     {
-      sectionName: 'Studio Vorteile',
+      header: 'Studio Vorteile',
       list: [
         { name: 'Wellness-Spa-Bereich', searchTerm: 'yoga' },
         { name: 'Kinderbetreuung', searchTerm: 'yoga' },
@@ -88,15 +88,15 @@ export const data = {
     },
 
     {
-      sectionName: 'Mein ganzheitlicher Ansatz',
+      header: 'Mein ganzheitlicher Ansatz',
       searchTerm: 'fitness and health',
-      textBody:
+      contentLong:
         'Fitness und Gesundheit stehen im Mittelpunkt. Ich kombiniere die besten Aspekte aller Trainingsarten, um ein maßgeschneidertes Programm für dich zu erstellen.',
     },
     {
-      sectionName: '',
+      header: '',
       searchTerm: 'every beginning is difficult',
-      textBody:
+      contentLong:
         'Aller Anfang ist schwer? Nicht bei mir! Ich mache den Einstieg so einfach wie möglich. Komm vorbei und überzeuge dich selbst!',
     },
   ],

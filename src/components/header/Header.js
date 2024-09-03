@@ -2,10 +2,11 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 
 import { titleStyles } from '../../theme/stylesData';
+
 import NavBar from '../../components/nav-bar/NavBar';
+import Title from '../titles/Title';
 
 import '../../index.css';
-import Title from '../titles/Title';
 
 export default function Header({ props }) {
   return (

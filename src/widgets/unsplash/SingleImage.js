@@ -6,18 +6,11 @@ import useGetUnsplash from '../../hooks/useGetUnsplash';
 export default function SingleImage({ activeSearchTerm, props }) {
   const [images, setImages] = useState();
 
-  const tempImages = useGetUnsplash(activeSearchTerm, images, setImages);
-  //   useEffect(() => {
-  //     setImages(tempImages);
-
-  //     return () => {};
-  //   }, [tempImages]);
-
   return (
     <>
-      {tempImages?.results && (
+      {images?.results && (
         <img
-          src={tempImages?.results[props.index]?.urls?.regular}
+          src={images?.results[props.index]?.urls?.regular}
           alt=""
           style={{
             //   zIndex: '0',
