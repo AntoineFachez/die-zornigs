@@ -1,4 +1,4 @@
-function Vehicle(i, x, y, p, p5, canvasWidth, canvasHeight) {
+function Vehicle(i, x, y, p, p5, canvasWidth, canvasHeight, points) {
   this.i = i;
   // this.pos = p.createVector(x, y);
   this.pos = p.createVector(p.random(canvasWidth), p.random(canvasHeight));
@@ -10,6 +10,7 @@ function Vehicle(i, x, y, p, p5, canvasWidth, canvasHeight) {
   // this.color = color;
   this.maxSpeed = 10;
   this.maxForce = 0.2;
+  this.length = points.length;
   // this.r = 24;
 }
 
@@ -76,11 +77,18 @@ Vehicle.prototype.show = function (
 
   p
 ) {
-  // p.stroke(mainObjColor);
-  // p.stroke(this.i / widthOfText, 200, 255);
-  p.stroke(this.i + 170, 213, 230);
-  // p.stroke(this.i / widthOfText, 200, 255);
+  const hue = ((360 * this.i) / this.length) % 360; // Map index to hue (0-360)
+  const saturation = 200; // Adjust as needed
+  const brightness = 200; // Adjust as needed
+
+  p.stroke(hue, saturation, brightness);
   p.strokeWeight(this.r);
   p.point(this.pos.x, this.pos.y);
+  // p.stroke(mainObjColor);
+  // p.stroke(this.i / widthOfText, 200, 255);
+  // p.stroke(this.i + 170, 213, 230);
+  // // p.stroke(this.i / widthOfText, 200, 255);
+  // p.strokeWeight(this.r);
+  // p.point(this.pos.x, this.pos.y);
 };
 export default Vehicle;

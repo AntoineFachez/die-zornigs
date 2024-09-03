@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Sketch from "./Sketch";
-import { basicBackground } from "../../../../themes/styledComponent";
+import React, { useEffect, useState } from 'react';
+import Sketch from './Sketch';
+// import { basicBackground } from "../../../../themes/styledComponent";
 
 const Index = (
   {
     //  width,
     //           height
-  },
+  }
 ) => {
   const useResizeObserver = () => {
     const [entry, setEntry] = useState(null);
@@ -33,11 +33,11 @@ const Index = (
   // console.log("mainColor", basicBackground);
   return (
     <>
-      {" "}
+      {' '}
       <Sketch
         width={width}
         height={height}
-        mainColor={basicBackground?.backgroundColor}
+        // mainColor={basicBackground?.backgroundColor}
       />
     </>
   );

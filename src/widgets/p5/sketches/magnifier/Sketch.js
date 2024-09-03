@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useRef, useEffect } from "react";
-import * as p5 from "p5";
+import React, { useState } from 'react';
+import { useRef, useEffect } from 'react';
+import * as p5 from 'p5';
 
-import { Particle } from "../../objects/Particle";
+import { Particle } from '../../objects/Particle';
 
 export default function Sketch({
   width,
@@ -22,14 +22,14 @@ export default function Sketch({
   let menu;
   let sliders = [];
   let colorPickers = [];
-  let res = 17;
-  let frameR = 25;
+  let res = 1;
+  let frameR = 5;
   let img;
   let ratio = height / width;
 
   //* DATA
   let data;
-  let ticksColor = "rgb(255, 200, 10)";
+  let ticksColor = 'rgb(255, 200, 10)';
   let months = [];
   let currentRow = 0;
   let currentMonth = 0;
@@ -109,8 +109,8 @@ export default function Sketch({
             i + (canvasWidth / 2 - img.width / 2 / ratio),
             j + (canvasHeight / 2 - img.height / 2 / ratio),
             c,
-            p,
-          ),
+            p
+          )
         );
       }
     }
@@ -126,9 +126,9 @@ export default function Sketch({
     // droppedJSON,
     // mainObjColor,
     // text,
-    sliders,
+    // sliders,
     selectedImageUrl,
-    picUrl,
+    // picUrl,
   ]);
 
   return (

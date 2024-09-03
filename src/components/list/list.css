@@ -1,0 +1,3 @@
+.scroll-container {
+  scroll-snap-type: y proximity;
+}
