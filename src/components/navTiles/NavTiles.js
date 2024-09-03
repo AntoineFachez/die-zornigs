@@ -21,11 +21,11 @@ export default function NavTiles({
   const [tileRefsReady, setTileRefsReady] = useState(false);
 
   useEffect(() => {
-    tileRefs.current = Array(props.data.tiles.length)
+    tileRefs.current = Array(props.data.lessons.length)
       .fill()
       .map((_, i) => tileRefs.current[i] || createRef());
     setTileRefsReady(true);
-  }, [props.data.tiles]);
+  }, [props.data.lessons]);
 
   const handleClick = (item, index) => {
     setAppState('main');
@@ -105,7 +105,7 @@ export default function NavTiles({
         }}
       >
         {' '}
-        {props.data.tiles.map((item, i) => (
+        {props.data.lessons.map((item, i) => (
           <div
             className="nav-tiles_anchors reddit-sans-thin"
             key={i}

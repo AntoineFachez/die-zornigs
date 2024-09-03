@@ -1,5 +1,5 @@
 import React from 'react';
-import { sectionData } from '../../../assets/data/landingPage-sectionData';
+import { data } from '../../../assets/data/pageData';
 import {
   sectionStyles,
   subTitleStyles,
@@ -11,7 +11,7 @@ import useGetUnsplash from '../../../hooks/useGetUnsplash';
 const Sections = ({ props }) => {
   // const images = useGetUnsplash('yoga');
   // console.log(images);
-  return sectionData.map((section, i) => (
+  return data?.landingPageSections.map((section, i) => (
     <Section
       key={section.sectionName} // Add a unique key for each Section
       props={{

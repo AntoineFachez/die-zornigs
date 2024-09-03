@@ -8,9 +8,9 @@ export default function Card({
   props,
   index,
   item,
+  activeTile,
   tileRefs,
   setTileRefs,
-  activeTile,
 }) {
   const { setAppState, showForm, setShowForm, setLessonInFocus } =
     useContext(PTBalanceContext);

@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 
 import { titleStyles } from '../../theme/stylesData';
-import NavBar from '../../views/pt-balance/NavBar';
+import NavBar from '../../components/nav-bar/NavBar';
 
 import '../../index.css';
 import Title from '../titles/Title';

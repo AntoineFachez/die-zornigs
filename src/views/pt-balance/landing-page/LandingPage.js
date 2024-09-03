@@ -1,7 +1,7 @@
 import { Box, Divider, Typography } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { sectionData } from '../../../assets/data/landingPage-sectionData';
+import { data } from '../../../assets/data/pageData';
 import {
   subTitleStyles,
   flexBoxStyles,
@@ -13,6 +13,7 @@ import SubTitle from '../../../components/titles/SubTitle';
 import Sections from './Sections';
 
 import './landing-page.css';
+import List from '../../../components/list/List';
 
 export default function LandingPage({ props }) {
   const listRef = useRef(null);
@@ -76,13 +77,16 @@ export default function LandingPage({ props }) {
       />
       <Divider sx={{ backgroundColor: 'white' }} variant="middle" flexItem />
       <Box sx={{ display: { xs: 'none', md: 'inline-flex' } }}>
-        <CallToActionTrigger
+        <a href="#kontakt" className="cta-button">
+          Beratungstermin vereinbaren
+        </a>{' '}
+        {/* <CallToActionTrigger
           listRef={listRef}
           sectionData={sectionData}
           activeLocationIndex={activeLocationIndex}
           handleLocationClick={handleLocationClick}
           customFontSize={customFontSize}
-        />{' '}
+        />{' '} */}
       </Box>
       <Box
         className="sections-container scroll-container "
@@ -94,11 +98,15 @@ export default function LandingPage({ props }) {
           padding: '1rem 0 5rem 0',
         }}
       >
-        <Sections props={props} />
+        <List
+          props={{
+            ...props,
+            data: data.landingPageSections,
+            amountTiles: data.landingPageSections.length,
+          }}
+        />
+        {/* <Sections props={props} /> */}
       </Box>
-      <a href="#kontakt" className="cta-button">
-        Beratungstermin vereinbaren
-      </a>
     </Box>
   );
 }

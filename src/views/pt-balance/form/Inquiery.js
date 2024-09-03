@@ -3,11 +3,11 @@ import React, { useContext, useEffect } from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import { Close } from '@mui/icons-material';
 
-import PTBalanceContext from '../../context/PTBalanceContext';
+import PTBalanceContext from '../../../context/PTBalanceContext';
 
-import Form from '../../components/form/Form';
-import SubTitle from '../../components/titles/SubTitle';
-import { subTitleStyles } from '../../theme/stylesData';
+import Form from '../../../components/form/Form';
+import SubTitle from '../../../components/titles/SubTitle';
+import { subTitleStyles } from '../../../theme/stylesData';
 
 export default function Inquiery({ props }) {
   const {

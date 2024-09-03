@@ -1,9 +1,9 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useRef,
   useState,
-  useContext,
 } from 'react';
 import { Box } from '@mui/material';
 
@@ -12,17 +12,22 @@ import { data } from '../../assets/data/pageData';
 import AppContext from '../../context/AppContext';
 import PTBalanceContext from '../../context/PTBalanceContext';
 import UIContext from '../../context/UIContext';
+import UserContext from '../../context/UserContext';
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
+import DashBoard from '../../components/dash-board/DashBoard';
 import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
-import Inquiery from './Inquiery';
+import Inquiery from './form/Inquiery';
 import LandingPage from './landing-page/LandingPage';
-import LogInOut from '../../auth/signUplogIn/Index';
-import Main from './Main';
+// import LogInOut from '../../auth/signUplogIn/Index';
+// import Lessons from './lessons/Lessons';
 import NavTiles from '../../components/navTiles/NavTiles';
+import Sessions from './sessions/Sessions';
 import SideBox from '../../components/sideBox/SideBox';
+import UserAccount from './users/UserAccount';
+import Users from './users/Users';
 
 import {
   headerStyles,
@@ -34,18 +39,14 @@ import '../../globalStyles.css';
 import '../../components/card/card.css';
 import '../../components/navTiles/nav-tiles.css';
 import '../../components/sideBox/side-box.css';
-import UserContext from '../../context/UserContext';
-import UserAccount from './users/UserAccount';
-import Users from './users/Users';
-import DashBoard from './DashBoard';
-import Sessions from './sessions/Sessions';
+import List from '../../components/list/List';
 
 export default function PTBalance() {
   const { deviceType, isPortrait } = useContext(AppContext);
   const { appState, showForm } = useContext(PTBalanceContext);
   const { showDrawer } = useContext(UIContext);
   const { user } = useContext(UserContext);
-  console.log('user', user);
+  // console.log('user', user);
 
   const scrollableContainerRef = useRef(null);
   const tileRefs = useRef([]);
@@ -67,25 +68,66 @@ export default function PTBalance() {
     // return null;
   }
 
-  const props = { deviceType: deviceType, appState: appState, data: data };
-
   const visibleTileIndecies = useIntersectionObserver(tileRefs.current, {
     root: null,
     rootMargin: !isPortrait ? '0%' : '40%',
     threshold: !isPortrait ? 0.4 : 0.1,
   });
 
+  const styledCard = isPortrait
+    ? {
+        // ...flexBoxStyles,
+        height: '100vh',
+        // display: 'flex',
+
+        overflow: 'auto',
+        // marginTop: '4rem',
+        borderRadius: '5px',
+        margin: `3rem 0 4rem 0`,
+        overflowX: 'hidden',
+        // padding: '4rem 0',
+      }
+    : {
+        // ...flexBoxStyles,
+        height: '100vh',
+        overflow: 'auto',
+        // marginTop: '4rem',
+        borderRadius: '5px',
+        // margin: `4rem 0 2rem 0`,
+        overflowX: 'hidden',
+        // padding: '4rem 0',
+      };
+  const props = {
+    deviceType: deviceType,
+    appState: appState,
+    visibleTileIndecies: visibleTileIndecies,
+    tileRefs: tileRefs,
+    setTileRefs: setTileRefs,
+    scrollableContainerRef: scrollableContainerRef,
+    isPortrait: isPortrait,
+    activeTile: activeTile,
+    style: styledCard,
+  };
   const switchComponent = () => {
     switch (appState) {
       case 'landingPage':
-        return <LandingPage props={props} />;
-      case 'main':
         return (
-          <Main
-            props={props}
-            setTileRefs={setTileRefs}
-            scrollableContainerRef={scrollableContainerRef}
-            visibleTileIndecies={visibleTileIndecies}
+          <List
+            props={{
+              ...props,
+              amountTiles: data.landingPageSections.length,
+              data: data.landingPageSections,
+            }}
+          />
+        );
+      case 'lessons':
+        return (
+          <List
+            props={{
+              ...props,
+              amountTiles: data.lessons.length,
+              data: data.lessons,
+            }}
           />
         );
       case 'userProfile':
@@ -113,7 +155,7 @@ export default function PTBalance() {
   }, [visibleTileIndecies]);
   return (
     <Box sx={{ ...appBodyStyles }}>
-      <Header props={{ ...props, headerStyles: headerStyles }} />
+      <Header props={{ ...props, data: data, headerStyles: headerStyles }} />
       {showDrawer && (
         <NavTiles
           props={{
