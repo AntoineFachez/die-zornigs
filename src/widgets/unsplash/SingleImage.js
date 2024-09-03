@@ -2,15 +2,29 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import UIContext from '../../context/UIContext';
 import useGetUnsplash from '../../hooks/useGetUnsplash';
+import { getImagesByQuery } from './unsplashApi';
 
 export default function SingleImage({ activeSearchTerm, props }) {
+  const [error, setError] = useState([]);
   const [images, setImages] = useState();
+
+  // const tempImages = useGetUnsplash(activeSearchTerm, images, setImages);
+  useEffect(() => {
+    setTimeout(async () => {
+      const data = await getImagesByQuery(activeSearchTerm, setError, error);
+      setImages(data);
+    }, 30);
+    console.log(images?.results[0]?.urls?.regular);
+
+    return () => {};
+  }, []);
 
   return (
     <>
       {images?.results && (
         <img
-          src={images?.results[props.index]?.urls?.regular}
+          // src={images?.results[props.index]?.urls?.regular}
+          src={images?.results[0]?.urls?.regular}
           alt=""
           style={{
             //   zIndex: '0',

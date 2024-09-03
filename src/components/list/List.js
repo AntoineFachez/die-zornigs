@@ -43,12 +43,13 @@ export default function List({ props }) {
   };
 
   useEffect(() => {
-    setTilesToRender(data);
+    console.log(tileRefs.current);
 
     return () => {};
-  }, [data]);
+  }, [tileRefs.current]);
 
   useEffect(() => {
+    setTilesToRender(data);
     loadTilesToDisplay();
   }, [data]);
 

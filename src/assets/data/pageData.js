@@ -18,37 +18,54 @@ export const data = {
 
   landingPageSections: [
     {
+      header: 'Intro',
+      list: [
+        {
+          name: '',
+          selectorText: '',
+          searchTerm: 'workout',
+          textLong: '',
+        },
+      ],
+      contentLong:
+        'Du solltest an einem Ort trainieren, an dem Fitness und Gesundheit im Mittelpunkt stehen. Aber aller Anfang ist schwer! Deshalb versuche ich, Dir den Einsteig so leicht, wie möglich zu machen. Komm vorbei und überzeuge dich selbst!',
+    },
+    {
       header: 'Lebensabschnitt',
       list: [
         {
           name: 'Schwangerschaft',
           selectorText: 'schwanger',
-          searchTerm: 'pregnant',
+          searchTerm: 'gym pregnancy',
           textLong: 'Du bist in Schwangerschaft',
         },
         {
           name: 'Rückbildung',
           selectorText: 'Rückbildung',
-          searchTerm: 'recreation after pregnancy',
+          searchTerm: 'gym with baby',
           textLong: 'Du hast Dein Kind geboren',
         },
         {
           name: 'Wechseljahre',
           selectorText: 'Wechseljahre',
-          searchTerm: 'menopause',
+          searchTerm: 'gym menopause',
           textLong: 'Du bist in Deinen Wechseljahren',
         },
       ],
+      // contentLong:
+      //   'Du solltest an einem Ort trainieren, an dem Fitness und Gesundheit im Mittelpunkt stehen. Aber aller Anfang ist schwer! Deshalb versuche ich, Dir den Einsteig so leicht, wie möglich zu machen. Komm vorbei und überzeuge dich selbst!',
     },
     {
-      header: 'Arten',
+      header: 'Trainings Arten',
       list: [
-        { name: 'Mit Geräten', searchTerm: 'sport with devices' },
+        { name: 'Mit Geräten', searchTerm: 'weight lift' },
         {
           name: 'Mit eigenem Körpergewicht',
-          searchTerm: 'sport with own body weight',
+          searchTerm: 'bodyweight training',
         },
       ],
+      contentLong:
+        'Wir können mit Geräten oder mit eigenem Körpergewicht Dein Training gestalten.',
     },
 
     {
@@ -57,25 +74,27 @@ export const data = {
         {
           location: 'park',
           name: 'Park',
-          searchTerm: 'sport in the park',
+          searchTerm: 'outdoor sports gym excersise',
           selectorText: 'im Park',
           textLong: 'Im Park',
         },
         {
           location: 'kaifuLodge',
           name: 'Kaifu-Lodge',
-          searchTerm: 'sport in sport studio',
+          searchTerm: 'gym studio',
           selectorText: 'im Studio',
           textLong: 'Im schönsten Studio Hamburgs: Kaifu-Lodge',
         },
         {
           location: 'atHome',
           name: 'zuhause',
-          searchTerm: 'sport at home',
+          searchTerm: 'gym home',
           selectorText: 'zuhause',
           textLong: 'Bei dir zuhause',
         },
       ],
+      contentLong:
+        'Ob Bei Dir Zuhause, im Park oder im schönsten Studio Hamburgs, der Kaifu-Lodge … es ist Deine Entscheidung wie Dein Training aussehen soll.',
     },
     {
       header: 'Studio Vorteile',
@@ -85,6 +104,10 @@ export const data = {
         { name: 'Gastronomie', searchTerm: 'yoga' },
         { name: 'Schwimmbad', searchTerm: 'yoga' },
       ],
+      contentLong:
+        'In der Kaifu-Lodge gibt es für Dich die Möglichkeit, nach dem Training noch den Wellnes Spa Bereich zu nutzen; so wie viele andere Angebote, wie z.B. die Kinderbetreuung, die Gastronomie und das Schwimmbad.',
+      imageUrl:
+        'https://www.kaifu-lodge.de/fileadmin/01-Content/About/about_header_s.jpg',
     },
 
     {
@@ -92,6 +115,8 @@ export const data = {
       searchTerm: 'fitness and health',
       contentLong:
         'Fitness und Gesundheit stehen im Mittelpunkt. Ich kombiniere die besten Aspekte aller Trainingsarten, um ein maßgeschneidertes Programm für dich zu erstellen.',
+      imageUrl:
+        'https://static.wixstatic.com/media/ef6490_75fd4ebd5c7c4e36b6cf80654551933f~mv2.jpg/v1/fill/w_687,h_690,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/MC_Portrait%20Laughing_edited.jpg',
     },
     {
       header: '',

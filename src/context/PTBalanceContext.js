@@ -7,8 +7,8 @@ const PTBalanceContext = createContext();
 
 export const PTBalanceProvider = ({ children }) => {
   const { today } = useContext(AppContext);
-  // const [appState, setAppState] = useState('landingPage');
-  const [appState, setAppState] = useState('lessons');
+  const [appState, setAppState] = useState('landingPage');
+  // const [appState, setAppState] = useState('lessons');
   const [showForm, setShowForm] = useState(false);
   const [lessonInFocus, setLessonInFocus] = useState(null);
 
