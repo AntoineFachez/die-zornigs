@@ -94,11 +94,11 @@ export default function CardBody({
             alignContent: 'center',
           }}
         >
-          {item.list ? (
+          {/* {item.list ? (
             <ListInSection props={item} />
-          ) : (
-            <CardAction handleClick={handleClick} even={even} />
-          )}
+          ) : ( */}
+          <CardAction handleClick={handleClick} even={even} props={item} />
+          {/* )} */}
           {/* {props.isPortrait && (
             <img
               style={{
@@ -128,7 +128,7 @@ export default function CardBody({
               // height: props.isPortrait ? 'auto' : '100%',
 
               // minHeight: '20rem',
-              // maxHeight: '45rem',
+              maxHeight: '45rem',
               margin: 'auto',
               // display: 'block',
               objectFit: props.isPortrait ? 'cover' : 'cover',

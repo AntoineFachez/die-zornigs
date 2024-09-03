@@ -4,6 +4,7 @@ import React from 'react';
 export default function ButtonItem({ props }) {
   return (
     <Button
+      key={props.index}
       onClick={props?.handleClick}
       size="small"
       color={props?.color ? props?.color : 'primary'}

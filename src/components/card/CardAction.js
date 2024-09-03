@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Box } from '@mui/material';
 import ButtonItem from '../button/Button';
 
-export default function CardAction({ handleClick }) {
+import ListInSection from '../section/ListInSection';
+export default function CardAction({ handleClick, props }) {
   return (
     <Box
       sx={{
@@ -11,15 +12,25 @@ export default function CardAction({ handleClick }) {
         width: '100%',
         height: 'fit-content',
         display: 'flex',
+        flexFlow: 'column wrap',
         justifyContent: 'center',
         padding: '3rem 0',
         alignContent: 'center',
         backgroundColor: '#01012320',
+        gap: '1rem',
       }}
     >
-      <ButtonItem
-        props={{ handleClick: handleClick, textContent: 'frag an' }}
-      />
+      {' '}
+      {/* <ListInSection props={props} /> */}
+      {props?.list?.map((button, i) => (
+        <ButtonItem
+          props={{
+            index: i,
+            handleClick: handleClick,
+            textContent: button.name,
+          }}
+        />
+      ))}
     </Box>
   );
 }
