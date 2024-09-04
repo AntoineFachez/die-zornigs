@@ -8,13 +8,14 @@ export default function CardAction({ handleClick, props }) {
     <Box
       sx={{
         position: 'sticky',
-        top: '50%',
+        top: '30%',
         width: '100%',
         height: 'fit-content',
+        // height: '100%',
         display: 'flex',
         flexFlow: 'column wrap',
         justifyContent: 'center',
-        padding: '3rem 0',
+        padding: '1rem 0',
         alignContent: 'center',
         backgroundColor: '#01012320',
         gap: '1rem',

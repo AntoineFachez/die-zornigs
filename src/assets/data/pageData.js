@@ -36,19 +36,19 @@ export const data = {
         {
           name: 'Schwangerschaft',
           selectorText: 'schwanger',
-          searchTerm: 'gym pregnancy',
+          searchTerm: 'woman gym pregnancy',
           textLong: 'Du bist in Schwangerschaft',
         },
         {
           name: 'Rückbildung',
           selectorText: 'Rückbildung',
-          searchTerm: 'gym with baby',
+          searchTerm: 'woman with baby gym',
           textLong: 'Du hast Dein Kind geboren',
         },
         {
           name: 'Wechseljahre',
           selectorText: 'Wechseljahre',
-          searchTerm: 'gym menopause',
+          searchTerm: 'woman gym menopause',
           textLong: 'Du bist in Deinen Wechseljahren',
         },
       ],

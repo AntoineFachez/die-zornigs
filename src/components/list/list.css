@@ -1,3 +1,9 @@
 .scroll-container {
+  width: 95%;
+
+  /* margin: 0rem 10rem 0rem 10rem; */
   scroll-snap-type: y proximity;
+  scroll-snap-align: center top;
+  scroll-snap-stop: always;
 }
+/*  */

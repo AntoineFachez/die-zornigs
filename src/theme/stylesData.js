@@ -10,9 +10,9 @@ export const appBodyStyles = {
   alignItems: 'center',
 };
 export const headerStyles = {
-  zIndex: 100,
-  position: 'absolute',
-  top: 0,
+  // zIndex: 100,
+  // position: 'absolute',
+  // top: 0,
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
@@ -20,14 +20,15 @@ export const headerStyles = {
 };
 export const footerStyles = {
   zIndex: 100,
-  position: 'absolute',
-  bottom: 0,
+  // position: 'absolute',
+  // bottom: 0,
   width: '100%',
-  height: 'max-content',
+  height: '5rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: '#333433cc',
+
   // backgroundColor: 'yellow',
   '&:hover': {
     backgroundColor: '#333433',

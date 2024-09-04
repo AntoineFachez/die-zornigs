@@ -49,7 +49,7 @@ export default function Card({
         borderRadius: '5px',
 
         // backgroundColor: '#dcc6b2',
-        boxShadow: '-2px -2px 25px 5px #33343380',
+        // boxShadow: '-2px -2px 25px 5px #33343380',
         margin: '0rem 0 3rem 0',
         // gap: '4rem',
 
@@ -60,12 +60,12 @@ export default function Card({
         scrollMargin: 0,
       }}
     >
-      <CardHeader
+      {/* <CardHeader
         props={props}
         index={index}
         item={item}
         activeTile={activeTile}
-      />{' '}
+      />{' '} */}
       <CardBody
         props={props}
         index={index}

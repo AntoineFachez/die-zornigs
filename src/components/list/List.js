@@ -21,7 +21,7 @@ export default function List({ props }) {
     // setActiveTile,
     {
       root: null,
-      rootMargin: !isPortrait ? '0%' : '40%',
+      rootMargin: !isPortrait ? '40%' : '40%',
       threshold: !isPortrait ? 0.4 : 0.1,
     }
   );
@@ -34,10 +34,9 @@ export default function List({ props }) {
     );
 
     setActiveTile(observedActiveTile);
-    console.log(observedActiveTile);
 
     if (highestVisibleTileIndex + 1 === amountTiles) {
-      console.log('scrollTriggered');
+      // console.log('scrollTriggered');
     } else if (highestVisibleTileIndex + 1 > amountTiles) {
     }
   };
@@ -58,8 +57,11 @@ export default function List({ props }) {
     const observedActiveTile = document.querySelector(
       `#tile-${observedActiveTileIndex}`
     );
-    setActiveTile(observedActiveTile);
-    // console.log(observedActiveTile);
+    setTimeout(() => {
+      setActiveTile(observedActiveTile);
+    }, 50);
+
+    // console.log(visibleTileIndecies);
     return () => {};
   }, [visibleTileIndecies]);
   const list = (

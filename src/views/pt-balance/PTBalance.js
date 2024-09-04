@@ -79,6 +79,7 @@ export default function PTBalance() {
 
         // marginTop: '4rem',
         // padding: '4rem 0',
+        // boxShadow: '-2px -2px 25px 5px #33343380',
       }
     : {
         // ...flexBoxStyles,
@@ -88,6 +89,7 @@ export default function PTBalance() {
         // marginTop: '4rem',
         // margin: `4rem 0 2rem 0`,
         // padding: '4rem 0',
+        // boxShadow: '-2px -2px 25px 5px #33343380',
       };
   const props = {
     deviceType: deviceType,
@@ -160,20 +162,10 @@ export default function PTBalance() {
         />
       )}
       {/* <SideBox data={data} /> */}
-      <Box
-        sx={{
-          ...flexBoxStyles,
-          color: 'white',
-          // backgroundColor: 'white',
-          padding: '5rem 0',
-        }}
-      >
-        {/* {switchComponent()} */}
-        {activeComponent}
-      </Box>
-      {props.deviceType === 'mobile' && (
-        <Footer props={{ ...props, footerStyles: footerStyles }} />
-      )}
+      {activeComponent}
+      <Footer props={{ ...props, footerStyles: footerStyles }} />
+      {/* {props.deviceType === 'mobile' && ( */}
+      {/* )} */}
     </Box>
   );
 }
